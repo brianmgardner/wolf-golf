@@ -75,7 +75,7 @@
         <!--NewGameVC-->
         <scene sceneID="qlG-sb-xns">
             <objects>
-                <viewController id="Apw-td-cuu" userLabel="NewGameVC" sceneMemberID="viewController">
+                <viewController id="Apw-td-cuu" userLabel="NewGameVC" customClass="NewGameViewController" customModule="WolfGolf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lsj-Z5-XTc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -187,6 +187,13 @@
                         <viewLayoutGuide key="safeArea" id="lPH-IN-8X4"/>
                     </view>
                     <navigationItem key="navigationItem" id="XG3-LC-tlR"/>
+                    <connections>
+                        <outlet property="addPlayerButton" destination="1El-xX-3dj" id="j2J-4X-Uua"/>
+                        <outlet property="addPlayerLabel" destination="ACx-5d-CSx" id="mQY-CK-B0p"/>
+                        <outlet property="newPlayerTextField" destination="9mT-4K-h6a" id="UeY-9T-TSz"/>
+                        <outlet property="playerTableView" destination="L4y-CR-mkP" id="Pvm-X5-SKA"/>
+                        <outlet property="startGameButton" destination="vDj-vV-887" id="d4q-s1-Df8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dEf-Eg-JyJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
