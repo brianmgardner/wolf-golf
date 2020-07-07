@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    var delegate: UIViewController
+    var delegate: UIViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
