@@ -103,8 +103,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="web-Vb-mHQ">
-                                <rect key="frame" x="33" y="258" width="372" height="205"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="web-Vb-mHQ">
+                                <rect key="frame" x="21" y="258" width="372" height="205"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="HBt-Mf-XuS">
                                         <rect key="frame" x="0.0" y="0.0" width="91" height="205"/>
@@ -207,6 +207,10 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="web-Vb-mHQ" firstAttribute="centerX" secondItem="lsj-Z5-XTc" secondAttribute="centerX" id="R20-y8-hzp"/>
+                            <constraint firstItem="web-Vb-mHQ" firstAttribute="top" secondItem="lPH-IN-8X4" secondAttribute="top" constant="170" id="WIN-s1-dIN"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="lPH-IN-8X4"/>
                     </view>
                     <navigationItem key="navigationItem" id="XG3-LC-tlR"/>
@@ -415,7 +419,7 @@
         <!--RecordsVC-->
         <scene sceneID="PAd-GT-9g7">
             <objects>
-                <viewController id="i7j-T0-wHo" userLabel="RecordsVC" sceneMemberID="viewController">
+                <viewController id="i7j-T0-wHo" userLabel="RecordsVC" customClass="RecordsViewController" customModule="WolfGolf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yZl-SJ-GBE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -498,6 +502,9 @@
                         <viewLayoutGuide key="safeArea" id="zxt-KF-jU0"/>
                     </view>
                     <navigationItem key="navigationItem" id="aFT-Vp-wj0"/>
+                    <connections>
+                        <outlet property="recordsTableView" destination="ecD-nU-Nc4" id="f7g-wR-zov"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzL-3Q-teQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -506,22 +513,23 @@
         <!--HowToPlayVC-->
         <scene sceneID="uOi-K0-3LM">
             <objects>
-                <viewController id="wPk-3a-pEq" userLabel="HowToPlayVC" sceneMemberID="viewController">
+                <viewController id="wPk-3a-pEq" userLabel="HowToPlayVC" customClass="HowToPlayViewController" customModule="WolfGolf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G7T-B4-jzw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rules of Wolf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThI-GQ-KAq">
-                                <rect key="frame" x="109" y="98" width="197" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Rules of Wolf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThI-GQ-KAq">
+                                <rect key="frame" x="109" y="94" width="197" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mel-Na-i08">
-                                <rect key="frame" x="20" y="161" width="374" height="701"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mel-Na-i08">
+                                <rect key="frame" x="20" y="156" width="374" height="720"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="720" id="WPy-29-pm3"/>
+                                </constraints>
                                 <string key="text">
 Wolf is played with four players, where all players play independently. The objective of the game is to be the player with the most points at the end of the round.
 
@@ -541,9 +549,19 @@ At the end of the match, the player with the highest total points wins a predete
                             </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="mel-Na-i08" secondAttribute="bottom" constant="20" id="1ye-a6-UYh"/>
+                            <constraint firstItem="mel-Na-i08" firstAttribute="leading" secondItem="qde-CY-hBT" secondAttribute="leading" constant="20" id="7JC-QX-e4k"/>
+                            <constraint firstItem="qde-CY-hBT" firstAttribute="trailing" secondItem="mel-Na-i08" secondAttribute="trailing" constant="20" id="8rQ-73-tQL"/>
+                            <constraint firstItem="mel-Na-i08" firstAttribute="centerX" secondItem="G7T-B4-jzw" secondAttribute="centerX" id="Nhx-do-YgL"/>
+                            <constraint firstItem="mel-Na-i08" firstAttribute="top" secondItem="ThI-GQ-KAq" secondAttribute="bottom" constant="20" id="cMb-xQ-ZtK"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qde-CY-hBT"/>
                     </view>
                     <navigationItem key="navigationItem" id="smv-ZS-HI4"/>
+                    <connections>
+                        <outlet property="rulesTextView" destination="mel-Na-i08" id="G4a-Ma-Uvp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P42-4z-m3E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -577,34 +595,19 @@ At the end of the match, the player with the highest total points wins a predete
         <!--SettingsVC-->
         <scene sceneID="9gw-3J-xb0">
             <objects>
-                <viewController id="kxT-ZN-zpc" userLabel="SettingsVC" sceneMemberID="viewController">
+                <viewController id="kxT-ZN-zpc" userLabel="SettingsVC" customClass="SettingsViewController" customModule="WolfGolf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lfl-ar-jrv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k8v-xr-p0D">
-                                <rect key="frame" x="297" y="167" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e8c-zH-2oY">
                                 <rect key="frame" x="297" y="242" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="nightModeSwitchChanged:" destination="h4U-bF-CuC" eventType="valueChanged" id="VVE-hx-kSL"/>
+                                    <action selector="nightModeSwitchChanged:" destination="kxT-ZN-zpc" eventType="valueChanged" id="wco-1w-xKw"/>
+                                </connections>
                             </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5R4-IT-SnN">
-                                <rect key="frame" x="297" y="321" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pz9-RL-dkr">
-                                <rect key="frame" x="297" y="400" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWX-dh-2We">
-                                <rect key="frame" x="172" y="167" width="71" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Night Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oI-zi-261">
                                 <rect key="frame" x="144" y="242" width="127" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -619,13 +622,6 @@ At the end of the match, the player with the highest total points wins a predete
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Variation 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auQ-w0-jPP">
-                                <rect key="frame" x="88" y="401" width="185" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHe-12-rZM">
                                 <rect key="frame" x="144" y="102" width="124" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -633,13 +629,24 @@ At the end of the match, the player with the highest total points wins a predete
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fZN-hd-hdr">
+                                <rect key="frame" x="297" y="321" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="gameVariationSwitchChanged:" destination="kxT-ZN-zpc" eventType="valueChanged" id="obs-4b-buB"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="aGa-TD-bQJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="tPq-2v-IEK"/>
+                    <connections>
+                        <outlet property="gameVariationLabel" destination="aCH-lU-nWi" id="UjA-tC-23E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UAD-Ue-x3o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="h4U-bF-CuC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="403" y="747"/>
         </scene>
