@@ -1,23 +1,16 @@
 //
-//  NewGameViewController.swift
+//  SettingsViewController.swift
 //  WolfGolf
 //
-//  Created by Brian Gardner on 7/7/20.
+//  Created by Ryan Resma on 7/7/20.
 //  Copyright © 2020 gardner. All rights reserved.
 //
 
 import UIKit
 
-class NewGameViewController: UIViewController {
-    
-    
-    @IBOutlet weak var addPlayerLabel: UILabel!
-    @IBOutlet weak var playerTableView: UITableView!
-    @IBOutlet weak var addPlayerButton: UIButton!
-    @IBOutlet weak var newPlayerTextField: UITextField!
-    @IBOutlet weak var startGameButton: UIButton!
-    
-    var delegate: UIViewController!
+class SettingsViewController: UIViewController {
+
+    var delegate: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()

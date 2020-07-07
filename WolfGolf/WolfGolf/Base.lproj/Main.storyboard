@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home Screen View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WolfGolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeScreenViewController" customModule="WolfGolf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="New Game"/>
                                 <connections>
-                                    <segue destination="Apw-td-cuu" kind="show" id="1ui-jL-vci"/>
+                                    <segue destination="Apw-td-cuu" kind="show" identifier="newGameSegueIdentifier" id="1ui-jL-vci"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqZ-RG-bP6">
@@ -37,7 +37,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="Records"/>
                                 <connections>
-                                    <segue destination="i7j-T0-wHo" kind="show" id="bli-Iy-Jdk"/>
+                                    <segue destination="i7j-T0-wHo" kind="show" identifier="recordsSegueIdentifier" id="bli-Iy-Jdk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaT-wy-pTW">
@@ -46,7 +46,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="How to Play"/>
                                 <connections>
-                                    <segue destination="wPk-3a-pEq" kind="show" id="9gx-jT-M9y"/>
+                                    <segue destination="wPk-3a-pEq" kind="show" identifier="howToPlaySegueIdentifier" id="9gx-jT-M9y"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SR8-A3-ftX">
@@ -55,7 +55,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
-                                    <segue destination="kxT-ZN-zpc" kind="show" id="dhS-qr-wdH"/>
+                                    <segue destination="kxT-ZN-zpc" kind="show" identifier="settingsSegueIdentifier" id="dhS-qr-wdH"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ug8-hn-6UY">
@@ -67,6 +67,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="epz-0d-3xX"/>
+                    <connections>
+                        <outlet property="homeScreenImageView" destination="ug8-hn-6UY" id="YPh-HZ-UDk"/>
+                        <outlet property="howToPlayButton" destination="zaT-wy-pTW" id="y8n-z8-EmC"/>
+                        <outlet property="newGameButton" destination="Gs6-Jl-bRj" id="j89-TW-TD2"/>
+                        <outlet property="recordsButton" destination="oqZ-RG-bP6" id="hox-9O-GmI"/>
+                        <outlet property="settingsButton" destination="SR8-A3-ftX" id="PaW-gj-RyO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
