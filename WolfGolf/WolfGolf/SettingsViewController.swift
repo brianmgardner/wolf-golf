@@ -29,10 +29,12 @@ class SettingsViewController: UIViewController {
 
     @IBAction func nightModeSwitchChanged(_ sender: UISwitch) {
         if !isNightMode {
+            self.isNightMode = true
             UIApplication.shared.windows.forEach { window in
                 window.overrideUserInterfaceStyle = .dark
             }
         } else {
+            self.isNightMode = false
             UIApplication.shared.windows.forEach { window in
                 window.overrideUserInterfaceStyle = .light
             }

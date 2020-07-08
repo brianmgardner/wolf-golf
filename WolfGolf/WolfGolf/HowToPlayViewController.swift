@@ -13,13 +13,11 @@ class HowToPlayViewController: UIViewController {
     var delegate: UIViewController!
     @IBOutlet weak var rulesTextView: UITextView!
     
-    override func loadView() {
-        self.rulesTextView.isScrollEnabled = true
-        self.rulesTextView.isUserInteractionEnabled = true
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.rulesTextView.isScrollEnabled = true
+        self.rulesTextView.isUserInteractionEnabled = true
     }
     
 
