@@ -12,6 +12,20 @@ class SettingsViewController: UIViewController {
     
     var isNightMode: Bool = false
     
+    @IBOutlet weak var numHoleLabel: UILabel!
+    @IBAction func numHoleSwitchChanged(_ sender: Any) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if appDelegate.isNineHole {
+            appDelegate.isNineHole = false
+            self.numHoleLabel.text = "18 Hole"
+        } else {
+            appDelegate.isNineHole = true
+            self.numHoleLabel.text = "9 Hole"
+        }
+    }
+    
+    
+    
     @IBOutlet weak var gameVariationLabel: UILabel!
     @IBAction func gameVariationSwitchChanged(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
