@@ -41,21 +41,22 @@ class NewGameViewController: UIViewController {
     //       twice without changing text field
     // make the prompts for bad input more specific
     func addPlayer(playerNum: Int, name: String, field: UITextField) {
-        if (name.count > 0 && (!playerList.contains(name))) {
+        let trimmedName = name.replacingOccurrences(of: " ", with: "")
+        if (trimmedName.count > 0 && (!playerList.contains(trimmedName))) {
             // -1 for 0-based indexing
-            self.playerAr[playerNum - 1] = name
-            playerList.insert(name, at: playerList.endIndex)
+            self.playerAr[playerNum - 1] = trimmedName
+            playerList.insert(trimmedName, at: playerList.endIndex)
             field.backgroundColor = UIColor.gray
             promptLabel.isHidden = true
         } else {
             promptLabel.isHidden = false
             //TODO: fix case if double click add
-            if (playerList.contains(name)) {
-                if (playerAr[playerNum] == name) {
+            if (playerList.contains(trimmedName)) {
+                if (playerAr[playerNum - 1] == trimmedName) {
                     promptLabel.text = """
                     Don't click the button again if
                     you didn't even change the name.
-                    Dumbfuck.
+                            >:-(
                     """
                 } else {
                     field.backgroundColor = UIColor.red
@@ -65,7 +66,6 @@ class NewGameViewController: UIViewController {
                     """
                 }
             } else {
-                
                 field.backgroundColor = UIColor.red
                 promptLabel.text = "Invalid Input. Try Again."
             }
