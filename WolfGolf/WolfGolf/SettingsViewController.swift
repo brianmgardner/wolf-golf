@@ -40,8 +40,6 @@ class SettingsViewController: UIViewController {
         
     }
     
-    // MARK: should we have a separate game variation?
-    
     var delegate: UIViewController!
     
     override func viewDidLoad() {
