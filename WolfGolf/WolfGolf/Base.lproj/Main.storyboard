@@ -247,10 +247,10 @@
             </objects>
             <point key="canvasLocation" x="1731.8840579710147" y="61.607142857142854"/>
         </scene>
-        <!--View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="Ad8-SM-maS">
             <objects>
-                <viewController id="TFU-en-qGh" sceneMemberID="viewController">
+                <viewController id="TFU-en-qGh" customClass="GameViewController" customModule="WolfGolf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9y0-md-aIY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
