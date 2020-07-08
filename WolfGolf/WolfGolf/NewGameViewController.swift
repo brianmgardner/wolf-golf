@@ -25,9 +25,17 @@ class NewGameViewController: UIViewController {
     
     var delegate: UIViewController!
     
-    var playerList: [String] = []
+    var player1 : Player!
+    var player2 : Player!
+    var player3 : Player!
+    var player4 : Player!
+    
+    var playerNamesList: [String] = []
     //TODO: change to an array of object type Player
-    var playerAr: [String] = ["","","",""]
+    var playerAr: [Player] = [Player(n: "", cs: 0, pi: -1),
+                              Player(n: "", cs: 0, pi: -1),
+                              Player(n: "", cs: 0, pi: -1),
+                              Player(n: "", cs: 0, pi: -1)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,22 +45,19 @@ class NewGameViewController: UIViewController {
     }
     
     // a helper method to reduce redundancy
-    // TODO: decide how to handle when "add" is pressed
-    //       twice without changing text field
-    // make the prompts for bad input more specific
     func addPlayer(playerNum: Int, name: String, field: UITextField) {
         let trimmedName = name.replacingOccurrences(of: " ", with: "")
-        if (trimmedName.count > 0 && (!playerList.contains(trimmedName))) {
+        if (trimmedName.count > 0 && (!playerNamesList.contains(trimmedName))) {
             // -1 for 0-based indexing
-            self.playerAr[playerNum - 1] = trimmedName
-            playerList.insert(trimmedName, at: playerList.endIndex)
+            self.playerAr[playerNum - 1] = Player(n: trimmedName, cs: 0, pi: playerNum)
+            playerNamesList.insert(trimmedName, at: playerNamesList.endIndex)
             field.backgroundColor = UIColor.gray
             promptLabel.isHidden = true
         } else {
             promptLabel.isHidden = false
             //TODO: fix case if double click add
-            if (playerList.contains(trimmedName)) {
-                if (playerAr[playerNum - 1] == trimmedName) {
+            if (playerNamesList.contains(trimmedName)) {
+                if (playerAr[playerNum - 1].name == trimmedName) {
                     promptLabel.text = """
                     Don't click the button again if
                     you didn't even change the name.
@@ -98,8 +103,8 @@ class NewGameViewController: UIViewController {
     
     
     func playerNamesAreValid() -> Bool {
-        return playerAr[0].count > 0 && playerAr[1].count > 0 &&
-               playerAr[2].count > 0 && playerAr[3].count > 0
+        return playerAr[0].name!.count > 0 && playerAr[1].name!.count > 0 &&
+            playerAr[2].name!.count > 0 && playerAr[3].name!.count > 0
     }
     
     
@@ -115,15 +120,21 @@ class NewGameViewController: UIViewController {
         }
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "startGameSegue",
+            let nextVC = segue.destination as? GameViewController {
+            nextVC.delegate = self
+            nextVC.player1 = playerAr[0]
+            nextVC.player2 = playerAr[1]
+            nextVC.player3 = playerAr[2]
+            nextVC.player4 = playerAr[3]
+        }
     }
-    */
+    
     
     // code to enable tapping on the background to remove software keyboard
     func textFieldShouldReturn(textField:UITextField) -> Bool {
