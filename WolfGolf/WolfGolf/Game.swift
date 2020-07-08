@@ -13,8 +13,15 @@ class Game {
     var image: UIImage?
     var highScore: Int?
     var description: String?
+    // change to Player object
+    var winner: String?
+    var date: String?
     
-    init() {
-        
+    init(i: UIImage, hs: Int, de: String, w: String, da: String) {
+        self.image = i
+        self.highScore = hs
+        self.description = de
+        self.winner = w
+        self.date = da
     }
 }

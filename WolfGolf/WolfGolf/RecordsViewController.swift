@@ -10,45 +10,67 @@ import UIKit
 
 protocol RecordAdder {
     // MARK: need a game object
-    func addRecord(game: Any)
+    func addRecord(game: Game)
 }
 
 class RecordsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, RecordAdder {
     
+    let tableCellID = "RecordTableCellIdentifier"
+    
+    var delegate: UIViewController!
+    
+    @IBOutlet weak var recordsTableView: UITableView!
+    
+    var recordList: [Game] = []
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return recordList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableCellID, for: indexPath) as! RecordTableViewCell
+        let currRecord = self.recordList[indexPath.row]
+        // modify the current attributes of the cell's UI as necessary
+        cell.cellImageView.image = currRecord.image
+        cell.cellGameWinnerLabel.text = "Game Winner: \(currRecord.winner!)"
+        cell.cellDateLabel.text = "Date: \(currRecord.date!)"
+        
+        return cell
     }
     
+    // handle an alert/modal with all of the game's data
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currRecord = self.recordList[indexPath.row]
+        let gameTitle = "\(currRecord.winner!) won the game!"
+        let gameMessage = "Date: \(currRecord.date!) \nHigh score: \(currRecord.highScore!) \n\n\(currRecord.description!)"
+        let controller = UIAlertController(title: gameTitle,
+                                           message: gameMessage, preferredStyle: .alert)
+        // thin crust option
+        controller.addAction(UIAlertAction(title: "GG \(currRecord.winner!)", style: .default, handler: nil))
+        present(controller, animated: true, completion: nil)
+    }
+    
+    // remove game
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // remove the current timer from our list and delete the UI tableViewCell
+            self.recordList.remove(at: indexPath.row)
+            recordsTableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        // MARK: commit deletion to core data
+    }
+
     
     // protocol method to change the current game list
-    func addRecord(game: Any) {
-        <#code#>
+    func addRecord(game: Game) {
+        self.recordList.append(game)
+        self.recordsTableView.reloadData()
     }
-    
-
-    @IBOutlet weak var recordsTableView: UITableView!
-    
-    var recordList: [Any] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.recordsTableView.delegate = self
+        self.recordsTableView.dataSource = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

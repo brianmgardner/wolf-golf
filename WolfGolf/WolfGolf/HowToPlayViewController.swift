@@ -10,6 +10,7 @@ import UIKit
 
 class HowToPlayViewController: UIViewController {
 
+    var delegate: UIViewController!
     @IBOutlet weak var rulesTextView: UITextView!
     
     override func loadView() {
