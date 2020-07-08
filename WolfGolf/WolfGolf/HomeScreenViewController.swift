@@ -33,19 +33,19 @@ class HomeScreenViewController: UIViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == newGameSegueID, let nextVC = segue.destination as? NewGameViewController {
-//            // new game button clicked
-//            nextVC.delegate = self
-//        } else if segue.identifier == howToPlaySegueID, let nextVC = segue.destination as? HowToPlayViewController {
-//            // how to play button clicked
-//            nextVC.delegate = self
-//        } else if segue.identifier == recordsSegueID, let nextVC = segue.destination as? RecordsViewController {
-//            // records button clicked
-//            nextVC.delegate = self
-//        } else if segue.identifier == settingsSegueID, let nextVC = segue.destination as? SettingsViewController {
-//            // settings button clicked
-//            nextVC.delegate = self
-//        }
+        if segue.identifier == newGameSegueID, let nextVC = segue.destination as? NewGameViewController {
+            // new game button clicked
+            nextVC.delegate = self
+        } else if segue.identifier == howToPlaySegueID, let nextVC = segue.destination as? HowToPlayViewController {
+            // how to play button clicked
+            nextVC.delegate = self
+        } else if segue.identifier == recordsSegueID, let nextVC = segue.destination as? RecordsViewController {
+            // records button clicked
+            nextVC.delegate = self
+        } else if segue.identifier == settingsSegueID, let nextVC = segue.destination as? SettingsViewController {
+            // settings button clicked
+            nextVC.delegate = self
+        }
     }
     
 }

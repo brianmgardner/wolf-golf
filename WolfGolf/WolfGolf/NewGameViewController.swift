@@ -43,7 +43,7 @@ class NewGameViewController: UIViewController {
     func addPlayer(playerNum: Int, name: String, field: UITextField) {
         if (name.count > 0 && (!playerList.contains(name))) {
             // -1 for 0-based indexing
-            playerAr[playerNum - 1] = name
+            self.playerAr[playerNum - 1] = name
             playerList.insert(name, at: playerList.endIndex)
             field.backgroundColor = UIColor.gray
             promptLabel.isHidden = true
