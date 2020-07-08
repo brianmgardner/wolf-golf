@@ -528,7 +528,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="720" id="WPy-29-pm3"/>
                                 </constraints>
-                                <mutableString key="text">
+                                <string key="text">
 Wolf is played with four players, where all players play independently. The objective of the game is to be the player with the most points at the end of the round.
 
 Before the first hole, the order of play is decided by drawing or by flipping a tee. The 'Wolf' is always the last player to tee off. At each hole, the players rotate the tee-off order (on the first hole 1,2,3,4 and on the second hole 2,3,4,1 and on fifth hole 1,2,3,4 again) so that each player becomes Wolf once every four holes. On the 17th and 18th holes the first and second players are Wolf, respectively.
@@ -540,7 +540,7 @@ After the tee shot of each player, the Wolf decides whether or not to take that 
 * If another player beats the Lone Wolf on a hole, all players - except the Lone Wolf - receive 1 point.
 
 At the end of the match, the player with the highest total points wins a predetermined 'pot.' Alternatively, a set amount is determined for each point, and the player with the lowest point total pays the difference to all other players. For example, if four players end up with 4,6,8, and 10 points respectively, then the player with 4 points owes 2, 4, and 6 to the other three players. The player with 6 points owes 2 and 4 to the top two players. And the player with 8 points owes 2 to the top player.
-</mutableString>
+</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -601,7 +601,7 @@ At the end of the match, the player with the highest total points wins a predete
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e8c-zH-2oY">
-                                <rect key="frame" x="297" y="242" width="49" height="31"/>
+                                <rect key="frame" x="297" y="200" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="nightModeSwitchChanged:" destination="h4U-bF-CuC" eventType="valueChanged" id="VVE-hx-kSL"/>
@@ -609,14 +609,14 @@ At the end of the match, the player with the highest total points wins a predete
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Night Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oI-zi-261">
-                                <rect key="frame" x="144" y="242" width="127" height="30"/>
+                                <rect key="frame" x="70" y="200" width="127" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Variation 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCH-lU-nWi">
-                                <rect key="frame" x="89" y="321" width="182" height="30"/>
+                                <rect key="frame" x="70" y="273" width="210" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
@@ -630,12 +630,26 @@ At the end of the match, the player with the highest total points wins a predete
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fZN-hd-hdr">
-                                <rect key="frame" x="297" y="321" width="49" height="31"/>
+                                <rect key="frame" x="297" y="272" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="gameVariationSwitchChanged:" destination="kxT-ZN-zpc" eventType="valueChanged" id="obs-4b-buB"/>
                                 </connections>
                             </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gLo-G1-6oM">
+                                <rect key="frame" x="297" y="349" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="numHoleSwitchChanged:" destination="kxT-ZN-zpc" eventType="valueChanged" id="zgB-4X-iSI"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9 Hole" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USM-SS-2mi">
+                                <rect key="frame" x="70" y="349" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="aGa-TD-bQJ"/>
@@ -643,18 +657,18 @@ At the end of the match, the player with the highest total points wins a predete
                     <navigationItem key="navigationItem" id="tPq-2v-IEK"/>
                     <connections>
                         <outlet property="gameVariationLabel" destination="aCH-lU-nWi" id="UjA-tC-23E"/>
+                        <outlet property="numHoleLabel" destination="USM-SS-2mi" id="98f-sK-2ze"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UAD-Ue-x3o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="h4U-bF-CuC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="403" y="747"/>
+            <point key="canvasLocation" x="402.89855072463769" y="746.65178571428567"/>
         </scene>
     </scenes>
     <resources>
         <image name="a.square" catalog="system" width="128" height="114"/>
         <image name="b.square" catalog="system" width="128" height="114"/>
-        <image name="camera.fill" catalog="system" width="128" height="96"/>
         <image name="golf-ball1" width="512" height="410"/>
         <image name="play.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
