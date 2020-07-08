@@ -166,13 +166,17 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puP-8h-Rbd">
                                                 <rect key="frame" x="0.0" y="0.0" width="18" height="31"/>
-                                                <state key="normal" image="plus" catalog="system"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="plus" catalog="system">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="player1Added:" destination="Apw-td-cuu" eventType="touchUpInside" id="CQo-Cn-3g5"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEu-qL-Gvb">
                                                 <rect key="frame" x="0.0" y="67" width="18" height="22"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="plus" catalog="system"/>
                                                 <connections>
                                                     <action selector="player2Added:" destination="Apw-td-cuu" eventType="touchUpInside" id="fCn-Nj-a3B"/>
@@ -180,6 +184,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPu-5X-hOm">
                                                 <rect key="frame" x="0.0" y="125" width="18" height="22"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="plus" catalog="system">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -190,6 +195,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eW-pY-3HO">
                                                 <rect key="frame" x="0.0" y="183" width="18" height="22"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="plus" catalog="system"/>
                                                 <connections>
                                                     <action selector="player4Added:" destination="Apw-td-cuu" eventType="touchUpInside" id="PnU-fA-dFn"/>
@@ -221,9 +227,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lPH-IN-8X4"/>
                     </view>
-                    <navigationItem key="navigationItem" id="XG3-LC-tlR">
-                        <barButtonItem key="backBarButtonItem" title="backkk" id="3X7-ln-Mr7" userLabel="Back"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="XG3-LC-tlR"/>
                     <connections>
                         <outlet property="addPlayer1Button" destination="puP-8h-Rbd" id="CDe-js-1yy"/>
                         <outlet property="addPlayer2Button" destination="VEu-qL-Gvb" id="UGp-Va-uXo"/>
@@ -420,7 +424,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="CT8-9m-jQb"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jfd-fb-98a"/>
+                    <navigationItem key="navigationItem" id="jfd-fb-98a">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="bJU-hO-EK3"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="374-gZ-Dl6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
