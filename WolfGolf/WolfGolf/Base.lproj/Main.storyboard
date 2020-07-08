@@ -87,56 +87,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDj-vV-887">
-                                <rect key="frame" x="89" y="716" width="237" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDj-vV-887">
+                                <rect key="frame" x="67" y="611" width="280" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="START GAME"/>
+                                <state key="normal" title="START GAME" image="golf-ball1"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="NO"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="startGameClicked:" destination="Apw-td-cuu" eventType="touchUpInside" id="Gqt-Vb-gvY"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add 4 Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACx-5d-CSx">
-                                <rect key="frame" x="118" y="154" width="179" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="web-Vb-mHQ">
-                                <rect key="frame" x="21" y="258" width="372" height="205"/>
+                                <rect key="frame" x="44" y="258" width="326" height="205"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="HBt-Mf-XuS">
-                                        <rect key="frame" x="0.0" y="0.0" width="91" height="205"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="99" height="205"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Player 1:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2s-Xj-hbc">
-                                                <rect key="frame" x="0.0" y="0.0" width="91" height="31"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <nil key="textColor"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="99" height="31"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Player 2:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seg-dy-bg4">
-                                                <rect key="frame" x="0.0" y="60" width="91" height="29"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <nil key="textColor"/>
+                                                <rect key="frame" x="0.0" y="60" width="99" height="29"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Player 3:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08a-jc-oww">
-                                                <rect key="frame" x="0.0" y="118" width="91" height="29"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <nil key="textColor"/>
+                                                <rect key="frame" x="0.0" y="118" width="99" height="29"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Player 4:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqN-RU-FAs">
-                                                <rect key="frame" x="0.0" y="176" width="91" height="29"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <nil key="textColor"/>
+                                                <rect key="frame" x="0.0" y="176" width="99" height="29"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="geF-4g-Xs7">
-                                        <rect key="frame" x="93" y="0.0" width="205" height="205"/>
+                                        <rect key="frame" x="101" y="0.0" width="205" height="205"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zYg-wB-vWF">
                                                 <rect key="frame" x="0.0" y="0.0" width="205" height="34"/>
@@ -164,32 +162,35 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="8jI-bq-dJd">
-                                        <rect key="frame" x="300" y="0.0" width="72" height="205"/>
+                                        <rect key="frame" x="308" y="0.0" width="18" height="205"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puP-8h-Rbd">
-                                                <rect key="frame" x="0.0" y="0.0" width="72" height="31"/>
-                                                <state key="normal" title="Button" image="plus" catalog="system"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="18" height="31"/>
+                                                <state key="normal" image="plus" catalog="system"/>
                                                 <connections>
                                                     <action selector="player1Added:" destination="Apw-td-cuu" eventType="touchUpInside" id="CQo-Cn-3g5"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEu-qL-Gvb">
-                                                <rect key="frame" x="0.0" y="67" width="72" height="22"/>
-                                                <state key="normal" title="Button" image="plus" catalog="system"/>
+                                                <rect key="frame" x="0.0" y="67" width="18" height="22"/>
+                                                <state key="normal" image="plus" catalog="system"/>
                                                 <connections>
                                                     <action selector="player2Added:" destination="Apw-td-cuu" eventType="touchUpInside" id="fCn-Nj-a3B"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPu-5X-hOm">
-                                                <rect key="frame" x="0.0" y="125" width="72" height="22"/>
-                                                <state key="normal" title="Button" image="plus" catalog="system"/>
+                                                <rect key="frame" x="0.0" y="125" width="18" height="22"/>
+                                                <state key="normal" image="plus" catalog="system">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="player3Added:" destination="Apw-td-cuu" eventType="touchUpInside" id="JuC-yo-Rtr"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eW-pY-3HO">
-                                                <rect key="frame" x="0.0" y="183" width="72" height="22"/>
-                                                <state key="normal" title="Button" image="plus" catalog="system"/>
+                                                <rect key="frame" x="0.0" y="183" width="18" height="22"/>
+                                                <state key="normal" image="plus" catalog="system"/>
                                                 <connections>
                                                     <action selector="player4Added:" destination="Apw-td-cuu" eventType="touchUpInside" id="PnU-fA-dFn"/>
                                                 </connections>
@@ -199,21 +200,30 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8q-Xf-vf3">
-                                <rect key="frame" x="33" y="473" width="335" height="157"/>
+                                <rect key="frame" x="33" y="473" width="335" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add 4 Players" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACx-5d-CSx">
+                                <rect key="frame" x="90" y="154" width="234" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="web-Vb-mHQ" firstAttribute="centerX" secondItem="lsj-Z5-XTc" secondAttribute="centerX" id="R20-y8-hzp"/>
                             <constraint firstItem="web-Vb-mHQ" firstAttribute="top" secondItem="lPH-IN-8X4" secondAttribute="top" constant="170" id="WIN-s1-dIN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lPH-IN-8X4"/>
                     </view>
-                    <navigationItem key="navigationItem" id="XG3-LC-tlR"/>
+                    <navigationItem key="navigationItem" id="XG3-LC-tlR">
+                        <barButtonItem key="backBarButtonItem" title="backkk" id="3X7-ln-Mr7" userLabel="Back"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="addPlayer1Button" destination="puP-8h-Rbd" id="CDe-js-1yy"/>
                         <outlet property="addPlayer2Button" destination="VEu-qL-Gvb" id="UGp-Va-uXo"/>
@@ -519,36 +529,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Rules of Wolf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThI-GQ-KAq">
-                                <rect key="frame" x="109" y="94" width="197" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="69" y="88" width="277" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mel-Na-i08">
-                                <rect key="frame" x="20" y="156" width="374" height="720"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="mel-Na-i08">
+                                <rect key="frame" x="20" y="131" width="374" height="731"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="720" id="WPy-29-pm3"/>
                                 </constraints>
-                                <string key="text">
+                                <mutableString key="text">
 Wolf is played with four players, where all players play independently. The objective of the game is to be the player with the most points at the end of the round.
 
 Before the first hole, the order of play is decided by drawing or by flipping a tee. The 'Wolf' is always the last player to tee off. At each hole, the players rotate the tee-off order (on the first hole 1,2,3,4 and on the second hole 2,3,4,1 and on fifth hole 1,2,3,4 again) so that each player becomes Wolf once every four holes. On the 17th and 18th holes the first and second players are Wolf, respectively.
 
 After the tee shot of each player, the Wolf decides whether or not to take that player on his/her team. Or, after all three other players have teed off, the Wolf can play as a 'Lone Wolf' if they feel they can beat all three other players. As the Lone Wolf, the player plays alone and tries to shoot the lowest NET score on the hole. Otherwise, each hole is played NET best ball (only the best score of each team counts) with scoring as follows:
-* If the Wolf and their partner win the hole, they each receive 2 points.
-* If the non-Wolf partners win the hole, they each receive 3 points.
+* If the Wolf and their partner win the hole, they each    r eceive 2 points.
+* If the non-Wolf partners win the hole,  they each receive 3 points.
 * If the Lone Wolf beats all the other players (shoots the lowest NET score), he/she receives 4 points.
 * If another player beats the Lone Wolf on a hole, all players - except the Lone Wolf - receive 1 point.
 
 At the end of the match, the player with the highest total points wins a predetermined 'pot.' Alternatively, a set amount is determined for each point, and the player with the lowest point total pays the difference to all other players. For example, if four players end up with 4,6,8, and 10 points respectively, then the player with 4 points owes 2, 4, and 6 to the other three players. The player with 6 points owes 2 and 4 to the top two players. And the player with 8 points owes 2 to the top player.
-</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+</mutableString>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="mel-Na-i08" secondAttribute="bottom" constant="20" id="1ye-a6-UYh"/>
                             <constraint firstItem="mel-Na-i08" firstAttribute="leading" secondItem="qde-CY-hBT" secondAttribute="leading" constant="20" id="7JC-QX-e4k"/>
@@ -565,7 +575,7 @@ At the end of the match, the player with the highest total points wins a predete
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P42-4z-m3E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1732" y="747"/>
+            <point key="canvasLocation" x="1731.8840579710147" y="746.65178571428567"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WgR-8T-E1s">
@@ -655,6 +665,7 @@ At the end of the match, the player with the highest total points wins a predete
         <image name="a.square" catalog="system" width="128" height="114"/>
         <image name="b.square" catalog="system" width="128" height="114"/>
         <image name="camera.fill" catalog="system" width="128" height="96"/>
+        <image name="golf-ball1" width="512" height="410"/>
         <image name="play.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
     </resources>

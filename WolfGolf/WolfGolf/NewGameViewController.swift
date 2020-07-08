@@ -31,7 +31,8 @@ class NewGameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // trying to make button a circle, not sure if this works at all
+        startGameButton.layer.cornerRadius = 50
         promptLabel.numberOfLines = 0
     }
     
@@ -39,21 +40,33 @@ class NewGameViewController: UIViewController {
     // TODO: decide how to handle when "add" is pressed
     //       twice without changing text field
     // make the prompts for bad input more specific
-    func addPlayer(playerNum: Int, name: String) {
+    func addPlayer(playerNum: Int, name: String, field: UITextField) {
         if (name.count > 0 && (!playerList.contains(name))) {
             // -1 for 0-based indexing
             playerAr[playerNum - 1] = name
             playerList.insert(name, at: playerList.endIndex)
+            field.backgroundColor = UIColor.gray
             promptLabel.isHidden = true
         } else {
             promptLabel.isHidden = false
             //TODO: fix case if double click add
             if (playerList.contains(name)) {
-                promptLabel.text = """
-                Someone is already using that name.
-                Make it different.
-                """
+                if (playerAr[playerNum] == name) {
+                    promptLabel.text = """
+                    Don't click the button again if
+                    you didn't even change the name.
+                    Dumbfuck.
+                    """
+                } else {
+                    field.backgroundColor = UIColor.red
+                    promptLabel.text = """
+                    Someone is already using that name.
+                    Make it different.
+                    """
+                }
             } else {
+                
+                field.backgroundColor = UIColor.red
                 promptLabel.text = "Invalid Input. Try Again."
             }
         }
@@ -62,25 +75,25 @@ class NewGameViewController: UIViewController {
     
     @IBAction func player1Added(_ sender: Any) {
         let str: String = player1TextField.text!
-        addPlayer(playerNum: 1, name: str)
+        addPlayer(playerNum: 1, name: str, field: player1TextField)
     }
     
 
     @IBAction func player2Added(_ sender: Any) {
         let str: String = player2TextField.text!
-        addPlayer(playerNum: 2, name: str)
+        addPlayer(playerNum: 2, name: str, field: player2TextField)
     }
     
     
     @IBAction func player3Added(_ sender: Any) {
         let str: String = player3TextField.text!
-        addPlayer(playerNum: 3, name: str)
+        addPlayer(playerNum: 3, name: str, field: player3TextField)
     }
     
     
     @IBAction func player4Added(_ sender: Any) {
         let str: String = player4TextField.text!
-        addPlayer(playerNum: 4, name: str)
+        addPlayer(playerNum: 4, name: str, field: player4TextField)
     }
     
     
