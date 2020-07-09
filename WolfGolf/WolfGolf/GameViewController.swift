@@ -84,36 +84,52 @@ class GameViewController: UIViewController {
     
     func playGame(numRounds: Int) {
         
+        buttonQueue.async {
         for round in 1...numRounds {
+            print(round)
+            
+            let curWolf: Player = self.playerQueue!.tail!
+            
+            DispatchQueue.main.sync {
+                self.curHoleLabel.text = """
+                Current Hole: \(round)
+                Wolf: \(curWolf.name!)
+                """
+            }
             
             
-            let curWolf: Player = playerQueue!.tail!
-            curHoleLabel.text = """
-            Current Hole: \(round)
-            Wolf: \(curWolf.name!)
-            """
             
             // determine players order and prompt them to tee off
             
             // loop through other 3 players before wolf goes
-            for _ in 1...3 {
-                
-                curOnTee = playerQueue!.dequeue()!
-                playerQueue!.enqueue(curOnTee)
-                
-                promptLabel.text = "\(curOnTee.name!) Up to Tee!"
-                
-                teammateLabel.text = "Choose \(curOnTee.name!) as teammate"
-                chooseTeamLock = true
-                teamPicked = false
-                buttonQueue.async {
-                    while (!self.teamPicked) {
-                        usleep(300000)
+            self.buttonQueue.async {
+                for _ in 1...3 {
+                    
+                    self.curOnTee = self.playerQueue!.dequeue()!
+                    self.playerQueue!.enqueue(self.curOnTee)
+                    
+                    DispatchQueue.main.sync {
+                        self.promptLabel.text = "\(self.curOnTee.name!) Up to Tee!"
+                        self.teammateLabel.text = "Choose \(self.curOnTee.name!) as teammate"
                     }
+                    
+                    
+                    self.teamPicked = false
+                    self.chooseTeamLock = true
+                    //buttonQueue.async {
+                    while (!self.teamPicked) {
+                        usleep(500000)
+                        print(".")
+                    }
+                    //}
+                    self.chooseTeamLock = false
+                    
                 }
-                chooseTeamLock = false
-                
             }
+            
+             }
+            
+            
             
             // first player swings
             // prompt wolf if they want to team with them
@@ -138,6 +154,7 @@ class GameViewController: UIViewController {
     @IBAction func yesClicked(_ sender: Any) {
         if (chooseTeamLock) {
             curTeammate = curOnTee
+            print("\(curTeammate!) picked as teammate")
             teamPicked = true
         }
     }
