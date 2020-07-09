@@ -47,7 +47,7 @@ class NewGameViewController: UIViewController {
     // a helper method to reduce redundancy
     func addPlayer(playerNum: Int, name: String, field: UITextField) {
         let trimmedName = name.replacingOccurrences(of: " ", with: "")
-        if (trimmedName.count > 0 && (!playerNamesList.contains(trimmedName))) {
+        if (trimmedName.count > 0 && trimmedName.count < 15 && (!playerNamesList.contains(trimmedName))) {
             // -1 for 0-based indexing
             self.playerAr[playerNum - 1] = Player(n: trimmedName, cs: 0,
                                                  pi: playerNum, isWolf: false)
@@ -73,7 +73,10 @@ class NewGameViewController: UIViewController {
                 }
             } else {
                 field.backgroundColor = UIColor.red
-                promptLabel.text = "Invalid Input. Try Again."
+                promptLabel.text = """
+                Invalid Input. Must be [1,15) chars.
+                Try Again.
+                """
             }
         }
     }
