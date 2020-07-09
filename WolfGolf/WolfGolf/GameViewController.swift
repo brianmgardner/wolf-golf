@@ -20,8 +20,12 @@ class GameViewController: UIViewController {
     let numRounds: Int? = nil
     var playerQueue: PlayerQueue<Player>?
     
+    var nextRoundLock: Bool = false
     var chooseTeamLock: Bool = false
     var teamPicked: Bool = false
+    var nextRoundPressed: Bool = false
+    var chooseWinnerLock: Bool = false
+    var winnerChosen: Bool = false
 
     
     @IBOutlet weak var curHoleLabel: UILabel!
@@ -30,10 +34,17 @@ class GameViewController: UIViewController {
     @IBOutlet weak var yesTeamButton: UIButton!
     @IBOutlet weak var noTeamButton: UIButton!
     
+    @IBOutlet weak var winnerTextLabel: UILabel!
+    
+    @IBOutlet weak var winnerSeg: UISegmentedControl!
+    
+    
     let buttonQueue = DispatchQueue(label: "myQueue", qos: .default)
     
+    var curWolf: Player!
     var curTeammate: Player!
     var curOnTee: Player!
+    var wolfWon: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,10 +61,11 @@ class GameViewController: UIViewController {
         
         randomlyPickFirst()
         
-        playGame(numRounds: 18)
+        playGame(numRounds: numRounds)
         
     }
     
+    // randomly fill queue in proper tee-off ordering
     func randomlyPickFirst() {
         let rand = Int.random(in: 1...4)
         switch rand {
@@ -85,77 +97,101 @@ class GameViewController: UIViewController {
     func playGame(numRounds: Int) {
         
         buttonQueue.async {
-        for round in 1...numRounds {
-            print(round)
             
-            let curWolf: Player = self.playerQueue!.tail!
-            
-            DispatchQueue.main.sync {
-                self.curHoleLabel.text = """
-                Current Hole: \(round)
-                Wolf: \(curWolf.name!)
-                """
-            }
-            
-            
-            
-            // determine players order and prompt them to tee off
-            
-            // loop through other 3 players before wolf goes
-            self.buttonQueue.async {
-                for _ in 1...3 {
+            // thought: would round -= 1 work as an "undo round" button/feature
+            for round in 1...numRounds {
+                print("round #: \(round)")
+                
+                self.curWolf = self.playerQueue!.tail!
+                
+                DispatchQueue.main.sync {
+                    // update hole/wolf
+                    self.curHoleLabel.text = """
+                    Current Hole: \(round)
+                    Wolf: \(self.curWolf.name!)
+                    """
+                    
+                    // hide winner stuff until last tee of round
+                    self.winnerTextLabel.isHidden = false
+                    self.winnerSeg.isHidden = false
+                }
+                
+                // determine players order and prompt them to tee off
+                
+                // loop through other 3 players before wolf goes
+                //self.buttonQueue.async {
+                self.teammateLabel.isHidden = false
+                self.noTeamButton.setTitle("NO", for: .normal)
+                self.noTeamButton.backgroundColor = UIColor.red
+                for tee in 1...3 {
                     
                     self.curOnTee = self.playerQueue!.dequeue()!
                     self.playerQueue!.enqueue(self.curOnTee)
                     
                     DispatchQueue.main.sync {
                         self.promptLabel.text = "\(self.curOnTee.name!) Up to Tee!"
-                        self.teammateLabel.text = "Choose \(self.curOnTee.name!) as teammate"
+                        self.teammateLabel.text = """
+                            Choose \(self.curOnTee.name!)
+                                    as teammate?"
+                            """
+                        self.teammateLabel.textAlignment = .center
+
                     }
                     
+                    // If down to third tee, its either team up or go wolf
+                    if (tee == 3) {
+                        DispatchQueue.main.sync {
+                            self.noTeamButton.backgroundColor = UIColor.blue
+                            self.noTeamButton.setTitle("WOLF", for: .normal)
+                            // TODO: only show winner stuff at the end of tees
+                            self.winnerTextLabel.isHidden = false
+                            self.winnerTextLabel.text = "Hole \(round)'s Winner:"
+                            self.winnerSeg.isHidden = false
+                        }
+                    }
                     
                     self.teamPicked = false
                     self.chooseTeamLock = true
-                    //buttonQueue.async {
+                    // wait for 'yes/no' to be pressed
                     while (!self.teamPicked) {
-                        usleep(500000)
+                        usleep(400000)
                         print(".")
                     }
-                    //}
+                    
                     self.chooseTeamLock = false
                     
+                } // -- end current round loop --
+                //  }
+                
+                
+                
+                // tally up the points
+                
+                
+                self.nextRoundPressed = false
+                self.nextRoundLock = true
+                // wait for 'next round' button to be pressed
+                while (!self.nextRoundPressed) {
+                    usleep(400000)
+                    print("-")
                 }
-            }
+                self.nextRoundLock = false
+                
+            } // -- end game loop
             
-             }
+            // save stats here
             
-            
-            
-            // first player swings
-            // prompt wolf if they want to team with them
-            
-            // second player swings
-            // prompt wolf if they want to team with them
-            
-            // third player swings
-            // prompt wolf if they want to team with them
-            // If wolf declines teaming with partner3, then they are LONE WOLF
-            
-            // wait for hole to play out
-            
-            // enter winner of the hole or enter tie
-            // if tie, then next hole is 2x points
-            
-            // tally up and assign points to the players
-            // next hole
         }
     }
     
     @IBAction func yesClicked(_ sender: Any) {
         if (chooseTeamLock) {
             curTeammate = curOnTee
+            teammateLabel.isHidden = true
             print("\(curTeammate!) picked as teammate")
             teamPicked = true
+        } else {
+            print("can't do that right now.")
         }
     }
     
@@ -163,9 +199,39 @@ class GameViewController: UIViewController {
     @IBAction func noClicked(_ sender: Any) {
         if (chooseTeamLock) {
             teamPicked = true
+            print("denied as teammate")
+        } else {
+            print("can't do that right now.")
         }
     }
     
+    @IBAction func nextRoundClicked(_ sender: Any) {
+        if (nextRoundLock) {
+            print("next round")
+            nextRoundPressed = true
+        } else {
+            print("can't do that right now.")
+        }
+    }
+    
+
+    @IBAction func winnerSegChosen(_ sender: Any) {
+        if (chooseWinnerLock) {
+            switch winnerSeg.selectedSegmentIndex {
+            case 0:
+                wolfWon = true
+                print("\(curWolf!) wins the round.")
+            case 1:
+                wolfWon = false
+                print("\(curWolf!) loses the round")
+            default:
+                print("ERROR")
+            }
+        } else {
+            print("can't do that right now.")
+        }
+        
+    }
     
     /*
     // MARK: - Navigation
