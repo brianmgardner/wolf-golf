@@ -74,7 +74,8 @@ class NewGameViewController: UIViewController {
             } else {
                 field.backgroundColor = UIColor.red
                 promptLabel.text = """
-                Invalid Input. Must be [1,15) chars.
+                Invalid Input.
+                Must be [1,15) chars.
                 Try Again.
                 """
             }
