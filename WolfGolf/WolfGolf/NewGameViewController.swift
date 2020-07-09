@@ -32,10 +32,10 @@ class NewGameViewController: UIViewController {
     
     var playerNamesList: [String] = []
     //TODO: change to an array of object type Player
-    var playerAr: [Player] = [Player(n: "", cs: 0, pi: -1),
-                              Player(n: "", cs: 0, pi: -1),
-                              Player(n: "", cs: 0, pi: -1),
-                              Player(n: "", cs: 0, pi: -1)]
+    var playerAr: [Player] = [Player(n: "", cs: 0, pi: -1, isWolf: false),
+                              Player(n: "", cs: 0, pi: -1, isWolf: false),
+                              Player(n: "", cs: 0, pi: -1, isWolf: false),
+                              Player(n: "", cs: 0, pi: -1, isWolf: false)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,8 @@ class NewGameViewController: UIViewController {
         let trimmedName = name.replacingOccurrences(of: " ", with: "")
         if (trimmedName.count > 0 && (!playerNamesList.contains(trimmedName))) {
             // -1 for 0-based indexing
-            self.playerAr[playerNum - 1] = Player(n: trimmedName, cs: 0, pi: playerNum)
+            self.playerAr[playerNum - 1] = Player(n: trimmedName, cs: 0,
+                                                 pi: playerNum, isWolf: false)
             playerNamesList.insert(trimmedName, at: playerNamesList.endIndex)
             field.backgroundColor = UIColor.gray
             promptLabel.isHidden = true
@@ -132,6 +133,7 @@ class NewGameViewController: UIViewController {
             nextVC.player2 = playerAr[1]
             nextVC.player3 = playerAr[2]
             nextVC.player4 = playerAr[3]
+            nextVC.playersList = playerAr
         }
     }
     
