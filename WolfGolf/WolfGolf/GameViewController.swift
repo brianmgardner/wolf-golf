@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Foundation
+import CoreData
 
 class RoundTableViewCell: UITableViewCell {
     @IBOutlet weak var cellHoleLabel: UILabel!
@@ -19,7 +21,7 @@ class RoundTableViewCell: UITableViewCell {
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var roundsList: [Round] = []
-
+    
     var delegate : UIViewController!
     
     var player1: Player!
@@ -86,9 +88,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let numRounds: Int = appDelegate.isNineHole ? 9 : 18
+        let numRounds: Int = appDelegate.isNineHole ? 1 : 18
         
         playerQueue = PlayerQueue<Player>()
         
@@ -376,6 +378,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             // show who won
             
             // save stats here
+            DispatchQueue.main.sync {
+                self.displayGameStats()
+            }
         }
     }
     
@@ -436,7 +441,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-
+    
     // return true once the user selects a winner for the round
     @IBAction func winnerSegChosen(_ sender: Any) {
         if (chooseWinnerLock) {
@@ -461,14 +466,64 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         winnerChosen = true
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func displayGameStats() {
+        let winner: String! = self.gameWinner.name!
+        let highScore: Int! = self.gameWinner.currScore!
+        
+        // date to string
+        let date: Date = Date()
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let timeStamp = dateFormatter.string(from: date)
+        
+        // currImage: UIImage?, currHighScore: Int?, currDescription: String?, currWinner: String?, currDate: String?
+        let currGame = Game(i: UIImage(), hs: highScore, w: winner, da: timeStamp)
+        
+        let controller = UIAlertController(title: "Game Finished!", message: "\(self.gameWinner.name!) won the game with a score of \(self.gameWinner.currScore!)!", preferredStyle: .alert)
+        controller.addAction(UIAlertAction(title: "Save to Records", style: .default, handler: {action in self.storeGame(g: currGame)}))
+        present(controller, animated: true, completion: nil)
     }
-    */
-
+    
+    var gameWinner: Player {
+        get {
+            var currWinner: Player = self.player1
+            var currHighScore: Int = self.player1.currScore!
+            if self.player2.currScore! > currHighScore {
+                currWinner = self.player2
+                currHighScore = self.player2.currScore!
+            }
+            if self.player3.currScore! > currHighScore {
+                currWinner = self.player3
+                currHighScore = self.player3.currScore!
+            }
+            if self.player4.currScore! > currHighScore {
+                currWinner = self.player4
+                currHighScore = self.player4.currScore!
+            }
+            return currWinner
+        }
+    }
+    
+    func storeGame(g: Game) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        // setting attribute values for the NSEntityObject
+        let game = NSEntityDescription.insertNewObject(forEntityName: "UserGame", into: context)
+        game.setValue(g.date!, forKey: "date")
+        game.setValue(g.highScore!, forKey: "highScore")
+        game.setValue(g.winner!, forKey: "winner")
+        let imageData: Data? = g.image?.pngData()
+        game.setValue(imageData, forKey: "image")
+        // try to save context to core data
+        do {
+            try context.save()
+            print("Context saved correctly!")
+        } catch {
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        // make the change to the table data
+        appDelegate.recordList.append(g)
+    }
 }
