@@ -90,25 +90,19 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let numRounds: Int = appDelegate.isNineHole ? 1 : 18
+        let numRounds: Int = appDelegate.isNineHole ? 9 : 18
         
         playerQueue = PlayerQueue<Player>()
         
         // init roundsTableView
         roundsTableView.delegate = self
         roundsTableView.dataSource = self
-        //roundsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "roundCellID")
-        
-        print("p1: \(player1.name!)")
-        print("p2: \(player2.name!)")
-        print("p3: \(player3.name!)")
-        print("p4: \(player4.name!)")
         
         updateScoreboardUI()
         
         randomlyPickFirst()
         
-        playGame(numRounds: numRounds)
+        playGame(numRounds: 1) // TODO: change ack to numRounds
         
     }
     
@@ -145,6 +139,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     // reset the proper booleans at the beginning of each round
     func updateNewRoundBools() {
         self.curWolf = self.playerQueue!.tail!
+        self.curTeammate = nil
         print("curWOLF: \(self.curWolf.name!)")
         self.curWolf.isWolfTeam = true
         self.isFinalTee = false
@@ -278,6 +273,12 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 Current Hole: \(round)
                 Wolf: \(self.curWolf.name!)
                 Teammate: \(self.curTeammate.name!)
+                """
+            } else {
+                self.curHoleLabel.text = """
+                Current Hole: \(round)
+                Wolf: \(self.curWolf.name!)
+                LONE WOLF
                 """
             }
             // only show winner stuff at the end of tees
