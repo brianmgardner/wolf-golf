@@ -12,10 +12,13 @@ class GameViewController: UIViewController {
 
     var delegate : UIViewController!
     
+    // TOOD: adding 4 players is redundant when you also bring in the list
     var player1 : Player!
     var player2 : Player!
     var player3 : Player!
     var player4 : Player!
+    
+    var playersList : [Player]!
     
     let numRounds: Int? = nil
     var playerQueue: PlayerQueue<Player>?
@@ -29,7 +32,10 @@ class GameViewController: UIViewController {
     var nextRoundPressed: Bool = false
     var chooseWinnerLock: Bool = false
     var winnerChosen: Bool = false
-    var roundTied: Bool = false
+    var prevRoundTied: Bool = false
+    var isLoneWolf: Bool = false
+    var curRoundTied: Bool = false
+    
     
     @IBOutlet weak var player1Score: UILabel!
     @IBOutlet weak var player2Score: UILabel!
@@ -120,13 +126,27 @@ class GameViewController: UIViewController {
                 print("round #: \(round)")
                 
                 self.curWolf = self.playerQueue!.tail!
+                self.curWolf.isWolfTeam = true
+                self.winnerChosen = false
+                self.yesPicked = false
+                self.noPicked = false
+                
                 
                 DispatchQueue.main.sync {
                     // update hole/wolf
+                    
                     self.curHoleLabel.text = """
                     Current Hole: \(round)
                     Wolf: \(self.curWolf.name!)
                     """
+                    
+
+                    
+                    self.winnerSeg.selectedSegmentIndex = UISegmentedControl.noSegment
+                    self.curWolf.isWolfTeam = true
+                    
+                    self.noTeamButton.setTitle("NO", for: .normal)
+                    self.noTeamButton.backgroundColor = UIColor.red
                     
                     // hide winner stuff until last tee of round
                     self.winnerTextLabel.isHidden = true
@@ -142,68 +162,125 @@ class GameViewController: UIViewController {
                 self.isFinalTee = false
                 
                 // loop through other 3 players before wolf goes
-                for tee in 1...3 {
+                //self.buttonQueue.async {
                     
-                    self.curOnTee = self.playerQueue!.dequeue()!
-                    self.playerQueue!.enqueue(self.curOnTee)
-                    
-                    DispatchQueue.main.sync {
-                        self.promptLabel.text = "\(self.curOnTee.name!) Up to Tee!"
-                        self.teammateLabel.text = """
+                    for tee in 1...3 {
+                        
+                        self.curOnTee = self.playerQueue!.dequeue()!
+                        self.playerQueue!.enqueue(self.curOnTee)
+                        print("\(self.curOnTee.name!) is on the tee")
+                        
+                        DispatchQueue.main.sync {
+                            self.promptLabel.text = "\(self.curOnTee.name!) Up to Tee!"
+                            self.teammateLabel.text = """
                             Choose \(self.curOnTee.name!)
-                                    as teammate?
+                            as teammate?
                             """
-                        self.teammateLabel.textAlignment = .center
-
-                    }
-                    
-                    // If down to third tee, its either team up or go wolf
-                    if (tee == 3) {
-                        DispatchQueue.main.sync {
-                            self.noTeamButton.backgroundColor = UIColor.blue
-                            self.noTeamButton.setTitle("WOLF", for: .normal)
+                            self.teammateLabel.textAlignment = .center
                             
-                            
-                            self.isFinalTee = true
                         }
-                    }
-                    
-                    self.teamPicked = false
-                    self.chooseTeamLock = true
-                    // wait for 'yes/no' to be pressed
-                    while (!self.yesPicked && !self.noPicked) {
-                        usleep(400000)
-                        print(".")
-                    }
-                    
-                    
-                    // once a teammate is chosen, skip to decide winner
-                    if (self.teamPicked) {
-                        //  maybe do other stuff here too?
-                        DispatchQueue.main.sync {
-                            // only show winner stuff at the end of tees
-                            self.winnerTextLabel.isHidden = false
-                            self.winnerTextLabel.text = "Hole \(round)'s Winner:"
-                            self.winnerSeg.isHidden = false
+                        
+                        // If down to third tee, its either team up or go wolf
+                        if (tee == 3) {
+                            DispatchQueue.main.sync {
+                                self.noTeamButton.backgroundColor = UIColor.blue
+                                self.noTeamButton.setTitle("WOLF", for: .normal)
+                                
+                                
+                                self.isFinalTee = true
+                            }
                         }
-                        break
-                    }
-                    
-                } // -- end tee loop --
+                        
+                        self.teamPicked = false
+                        self.chooseTeamLock = true
+                        self.noPicked = false
+                        // wait for 'yes/no' to be pressed
+                        while (!self.yesPicked && !self.noPicked) {
+                            usleep(400000)
+                            print(".")
+                        }
+                        
+                        
+                        // once a teammate is chosen, skip to decide winner
+                        if (self.teamPicked) {
+                            print("showing winner stuff")
+                            //  maybe do other stuff here too?
+                            DispatchQueue.main.sync {
+                                // show added teammate
+                                if (self.curTeammate != nil) {
+                                    self.curHoleLabel.text = """
+                                    Current Hole: \(round)
+                                    Wolf: \(self.curWolf.name!)
+                                    Teammate: \(self.curTeammate.name!)
+                                    """
+                                }
+                                // only show winner stuff at the end of tees
+                                self.winnerTextLabel.isHidden = false
+                                self.winnerTextLabel.text = "Select Hole \(round)'s Winner(s):"
+                                self.winnerSeg.isHidden = false
+                            }
+                            print("BREAKING from tee loop")
+                            break
+                        }
+                        
+                    } // -- end tee loop --
+                //}
+                
+                
+                // choose winner
+                self.chooseWinnerLock = true
+                // wait for winner of round to be chosen
+                while (!self.winnerChosen) {
+                    usleep(300000)
+                    print(",")
+                }
+                self.chooseWinnerLock = false
+                
                 // LEFT OFF RIGHT HERE!
                 //      - add vars to Player class for wolf/other
                 //      - here, loop through a PlayerList and check ^ vars
                 //      - tally up appropriate points
-                
-                // tally up the points
-                if (self.roundTied) { // points worth 2x if prev round tied
-                    
+                var winPoints: Int
+                if (self.isLoneWolf) {
+                    if (self.wolfWon) {
+                        winPoints = 4
+                    } else {
+                        winPoints = 1
+                    }
+                } else {
+                    winPoints = 2
                 }
                 
-                self.player1Score.text = "\(self.player1.name!)'s score: \(self.player1.currScore!)"
-                self.player2Score.text = "\(self.player2.name!)'s score: \(self.player2.currScore!)"
-                self.player3Score.text = "\(self.player3.name!)'s score: \(self.player3.currScore!)"
-                self.player4Score.text = "\(self.player4.name!)'s score: \(self.player4.currScore!)"
+                // add points to winPoints to winners
+                
+                for player in self.playersList {
+                    
+                    if ((self.wolfWon && player.isWolfTeam!) ||
+                        (!self.wolfWon) && !player.isWolfTeam!) {
+                        if (!self.curRoundTied) {
+                            if (self.prevRoundTied) {
+                                print("TIED 2x POINTS")
+                                winPoints *= 2
+                                self.prevRoundTied = false
+                            }
+                            player.currScore! += winPoints
+                            print("adding points")
+                            print("\(player.name!) : isWolfTeam: \(player.isWolfTeam!)")
+                            
+                        }
+                        
+                        player.isWolfTeam! = false
+                    }
+                }
+                self.curRoundTied = false
+                
+                DispatchQueue.main.sync {
+                    // Update scoreboard
+                    self.player1Score.text = "\(self.player1.name!)'s score: \(self.player1.currScore!)"
+                    self.player2Score.text = "\(self.player2.name!)'s score: \(self.player2.currScore!)"
+                    self.player3Score.text = "\(self.player3.name!)'s score: \(self.player3.currScore!)"
+                    self.player4Score.text = "\(self.player4.name!)'s score: \(self.player4.currScore!)"
+                }
                 
                 
                 self.nextRoundPressed = false
@@ -225,11 +302,16 @@ class GameViewController: UIViewController {
     @IBAction func yesClicked(_ sender: Any) {
         if (chooseTeamLock) {
             curTeammate = curOnTee
+            curTeammate.isWolfTeam = true
+            print("curT: \(curTeammate.name!)")
+            promptLabel.text = "Play Out Round"
             teammateLabel.isHidden = true
             yesTeamButton.isHidden = true
             noTeamButton.isHidden = true
+            isLoneWolf = false
             print("\(curTeammate!) picked as teammate")
             yesPicked = true
+            teamPicked = true
         } else {
             print("can't do that right now.")
         }
@@ -241,6 +323,12 @@ class GameViewController: UIViewController {
             // player if going wolf, make teamPicked == true to exit tee loop
             if (isFinalTee) {
                 teamPicked = true
+                isLoneWolf = true
+                promptLabel.text = "Play Out Round"
+                teammateLabel.isHidden = true
+                yesTeamButton.isHidden = true
+                noTeamButton.isHidden = true
+                print("\(curWolf!) is LONE WOLF")
             }
             noPicked = true
             print("denied as teammate")
@@ -252,7 +340,12 @@ class GameViewController: UIViewController {
     @IBAction func nextRoundClicked(_ sender: Any) {
         if (nextRoundLock) {
             print("next round")
+            // reset curWolf/teammate vars
+            if (curTeammate != nil) {
+                curTeammate.isWolfTeam = false
+            }
             nextRoundPressed = true
+            curWolf.isWolfTeam = false
         } else {
             print("can't do that right now.")
         }
@@ -264,21 +357,22 @@ class GameViewController: UIViewController {
             switch winnerSeg.selectedSegmentIndex {
             case 0: // WOLF WIN
                 wolfWon = true
-                print("\(curWolf!) wins the round.")
+                print("\(curWolf.name!) wins the round.")
             case 1: // WOLF LOSE
                 wolfWon = false
-                print("\(curWolf!) loses the round")
+                print("\(curWolf.name!) loses the round")
             case 2: // TIE
                 wolfWon = false
-                roundTied = true
+                prevRoundTied = true
+                curRoundTied = true
+                print("ITS A TIE!")
             default:
                 print("ERROR")
             }
         } else {
             print("can't do that right now.")
         }
-        chooseWinnerLock = false
-        
+        winnerChosen = true
     }
     
     /*

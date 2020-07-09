@@ -14,10 +14,12 @@ class Player {
     var currScore: Int?
     // Player 1, 2, 3, 4
     var playerIndex: Int?
+    var isWolfTeam: Bool?
     
-    init(n: String, cs: Int, pi: Int) {
+    init(n: String, cs: Int, pi: Int, isWolf: Bool) {
         self.name = n
         self.currScore = cs
         self.playerIndex = pi
+        self.isWolfTeam = isWolf
     }
 }
