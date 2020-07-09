@@ -8,15 +8,25 @@
 
 import UIKit
 
-class GameViewController: UIViewController {
+class RoundTableViewCell: UITableViewCell {
+    @IBOutlet weak var cellHoleLabel: UILabel!
+    @IBOutlet weak var cellWolfLabel: UILabel!
+    @IBOutlet weak var cellTeamLabel: UILabel!
+    @IBOutlet weak var cellWinnerLabel: UILabel!
+}
+
+
+class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var roundsList: [Round] = []
 
     var delegate : UIViewController!
     
     // TOOD: adding 4 players is redundant when you also bring in the list
-    var player1 : Player!
-    var player2 : Player!
-    var player3 : Player!
-    var player4 : Player!
+    var player1: Player!
+    var player2: Player!
+    var player3: Player!
+    var player4: Player!
     
     var playersList : [Player]!
     
@@ -42,9 +52,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var player3Score: UILabel!
     @IBOutlet weak var player4Score: UILabel!
     
-    
+    @IBOutlet weak var roundsTableView: UITableView!
 
-    
     @IBOutlet weak var curHoleLabel: UILabel!
     @IBOutlet weak var promptLabel: UILabel!
     @IBOutlet weak var teammateLabel: UILabel!
@@ -63,6 +72,27 @@ class GameViewController: UIViewController {
     var curOnTee: Player!
     var wolfWon: Bool!
     
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return roundsList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = roundsTableView.dequeueReusableCell(withIdentifier: "roundCellID", for: indexPath) as! RoundTableViewCell
+        
+        let row = indexPath.row
+        let curRound = roundsList[row]
+        
+        cell.cellHoleLabel.text = "HOLE: \(curRound.holeNum!)"
+        cell.cellWolfLabel.text = "Wolf: \(curRound.wolfName!)"
+        cell.cellTeamLabel.text = "\(curRound.teammateName!)"
+        cell.cellWinnerLabel.text = "Winner: \(curRound.winnerName!)"
+        
+        return cell
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -70,6 +100,11 @@ class GameViewController: UIViewController {
         let numRounds: Int = appDelegate.isNineHole ? 9 : 18
         
         playerQueue = PlayerQueue<Player>()
+        
+        // init roundsTableView
+        roundsTableView.delegate = self
+        roundsTableView.dataSource = self
+        //roundsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "roundCellID")
         
         print("p1: \(player1.name!)")
         print("p2: \(player2.name!)")
@@ -126,6 +161,7 @@ class GameViewController: UIViewController {
                 print("round #: \(round)")
                 
                 self.curWolf = self.playerQueue!.tail!
+                print("curWOLF: \(self.curWolf.name!)")
                 self.curWolf.isWolfTeam = true
                 self.winnerChosen = false
                 self.yesPicked = false
@@ -134,14 +170,11 @@ class GameViewController: UIViewController {
                 
                 DispatchQueue.main.sync {
                     // update hole/wolf
-                    
                     self.curHoleLabel.text = """
                     Current Hole: \(round)
                     Wolf: \(self.curWolf.name!)
                     """
-                    
-
-                    
+                
                     self.winnerSeg.selectedSegmentIndex = UISegmentedControl.noSegment
                     self.curWolf.isWolfTeam = true
                     
@@ -167,7 +200,10 @@ class GameViewController: UIViewController {
                     for tee in 1...3 {
                         
                         self.curOnTee = self.playerQueue!.dequeue()!
+                        print("\(self.curOnTee.name!) DEQUEUED")
                         self.playerQueue!.enqueue(self.curOnTee)
+                        print("\(self.curOnTee.name!) ENQUEUED")
+                        
                         print("\(self.curOnTee.name!) is on the tee")
                         
                         DispatchQueue.main.sync {
@@ -197,7 +233,7 @@ class GameViewController: UIViewController {
                         // wait for 'yes/no' to be pressed
                         while (!self.yesPicked && !self.noPicked) {
                             usleep(400000)
-                            print(".")
+                            //print(".")
                         }
                         
                         
@@ -218,9 +254,21 @@ class GameViewController: UIViewController {
                                 self.winnerTextLabel.isHidden = false
                                 self.winnerTextLabel.text = "Select Hole \(round)'s Winner(s):"
                                 self.winnerSeg.isHidden = false
+                                
+                                var t = tee
+                                while (t <= 4) {
+                                    self.curOnTee = self.playerQueue!.dequeue()!
+                                    self.playerQueue!.enqueue(self.curOnTee)
+                                    t += 1
+                                }
                             }
+                            
                             print("BREAKING from tee loop")
                             break
+                            // -----------------
+                            //self.curOnTee = self.playerQueue!.dequeue()!
+                            //self.playerQueue!.enqueue(self.curOnTee)
+                            
                         }
                         
                     } // -- end tee loop --
@@ -232,14 +280,10 @@ class GameViewController: UIViewController {
                 // wait for winner of round to be chosen
                 while (!self.winnerChosen) {
                     usleep(300000)
-                    print(",")
+                    //print(",")
                 }
                 self.chooseWinnerLock = false
-                
-                // LEFT OFF RIGHT HERE!
-                //      - add vars to Player class for wolf/other
-                //      - here, loop through a PlayerList and check ^ vars
-                //      - tally up appropriate points
+
                 var winPoints: Int
                 if (self.isLoneWolf) {
                     if (self.wolfWon) {
@@ -251,10 +295,8 @@ class GameViewController: UIViewController {
                     winPoints = 2
                 }
                 
-                // add points to winPoints to winners
-                
+                // add winPoints to winners
                 for player in self.playersList {
-                    
                     if ((self.wolfWon && player.isWolfTeam!) ||
                         (!self.wolfWon) && !player.isWolfTeam!) {
                         if (!self.curRoundTied) {
@@ -288,9 +330,22 @@ class GameViewController: UIViewController {
                 // wait for 'next round' button to be pressed
                 while (!self.nextRoundPressed) {
                     usleep(400000)
-                    print("-")
+                    //print("-")
                 }
                 self.nextRoundLock = false
+                
+                // add round to roundsViewTable
+                let teammateName: String = !self.isLoneWolf ? "Team: \(self.curTeammate.name!)" : "LONE WOLF"
+                var roundWinner: String = self.wolfWon ? "Wolf" : "Others"
+                if (self.prevRoundTied) {
+                    roundWinner = "TIE"
+                }
+                let curRound: Round = Round(num: round, wolf: self.curWolf.name!,
+                                           team: teammateName, winner: roundWinner)
+                DispatchQueue.main.sync {
+                    self.roundsList.insert(curRound, at: self.roundsList.endIndex)
+                    self.roundsTableView.reloadData()
+                }
                 
             } // -- end game loop
             
@@ -309,7 +364,7 @@ class GameViewController: UIViewController {
             yesTeamButton.isHidden = true
             noTeamButton.isHidden = true
             isLoneWolf = false
-            print("\(curTeammate!) picked as teammate")
+            print("\(curTeammate.name!) picked as teammate")
             yesPicked = true
             teamPicked = true
         } else {
