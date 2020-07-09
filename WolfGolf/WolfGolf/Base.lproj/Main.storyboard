@@ -452,77 +452,82 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="57" translatesAutoresizingMaskIntoConstraints="NO" id="BEu-dr-JO4">
-                                <rect key="frame" x="20" y="118" width="374" height="758"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hall of Fame" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ll7-Dk-cgG">
-                                        <rect key="frame" x="83.5" y="0.0" width="207" height="42"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ecD-nU-Nc4">
-                                        <rect key="frame" x="0.0" y="99" width="374" height="659"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecordCellIdentifier" rowHeight="120" id="unI-VF-mLW" customClass="RecordTableViewCell" customModule="WolfGolf" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="374" height="120"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="unI-VF-mLW" id="lYH-h7-rdg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="120"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xeR-5Y-FnL">
-                                                            <rect key="frame" x="30" y="15" width="90" height="90"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="90" id="ck8-TA-QcZ"/>
-                                                                <constraint firstAttribute="height" constant="90" id="pMB-Sc-MDn"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Kn7-ie-X0D">
-                                                            <rect key="frame" x="130" y="35.5" width="108.5" height="49"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Game Winner:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twG-U4-hec">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="108.5" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tls-tE-Sqs">
-                                                                    <rect key="frame" x="0.0" y="28.5" width="41" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                    </subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hall of Fame" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ll7-Dk-cgG">
+                                <rect key="frame" x="103.5" y="103" width="207" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ecD-nU-Nc4">
+                                <rect key="frame" x="20" y="155" width="374" height="721"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecordCellIdentifier" rowHeight="120" id="unI-VF-mLW" customClass="RecordTableViewCell" customModule="WolfGolf" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="unI-VF-mLW" id="lYH-h7-rdg">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xeR-5Y-FnL">
+                                                    <rect key="frame" x="30" y="15" width="90" height="90"/>
                                                     <constraints>
-                                                        <constraint firstItem="xeR-5Y-FnL" firstAttribute="leading" secondItem="lYH-h7-rdg" secondAttribute="leadingMargin" constant="10" id="6IV-Yn-ovf"/>
-                                                        <constraint firstItem="Kn7-ie-X0D" firstAttribute="centerY" secondItem="lYH-h7-rdg" secondAttribute="centerY" id="bXh-fp-82k"/>
-                                                        <constraint firstItem="xeR-5Y-FnL" firstAttribute="centerY" secondItem="lYH-h7-rdg" secondAttribute="centerY" id="uHk-GD-bt6"/>
-                                                        <constraint firstItem="Kn7-ie-X0D" firstAttribute="leading" secondItem="xeR-5Y-FnL" secondAttribute="trailing" constant="10" id="vFh-PK-icd"/>
+                                                        <constraint firstAttribute="width" constant="90" id="ck8-TA-QcZ"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="f2g-Mo-zXZ"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="l3y-VX-mV0"/>
+                                                        <constraint firstAttribute="height" constant="90" id="pMB-Sc-MDn"/>
                                                     </constraints>
-                                                </tableViewCellContentView>
-                                                <connections>
-                                                    <outlet property="cellDateLabel" destination="Tls-tE-Sqs" id="Ovi-T4-LNc"/>
-                                                    <outlet property="cellGameWinnerLabel" destination="twG-U4-hec" id="mHL-lI-dnf"/>
-                                                    <outlet property="cellImageView" destination="xeR-5Y-FnL" id="eTr-5S-WmT"/>
-                                                </connections>
-                                            </tableViewCell>
-                                        </prototypes>
-                                    </tableView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="ecD-nU-Nc4" firstAttribute="centerX" secondItem="BEu-dr-JO4" secondAttribute="centerX" id="UfH-bg-o9t"/>
-                                </constraints>
-                            </stackView>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Kn7-ie-X0D">
+                                                    <rect key="frame" x="130" y="35.5" width="160" height="49"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Winner:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twG-U4-hec">
+                                                            <rect key="frame" x="0.0" y="0.0" width="160" height="20.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="160" id="ep9-OO-Dj7"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tls-tE-Sqs">
+                                                            <rect key="frame" x="0.0" y="28.5" width="41" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xeR-5Y-FnL" firstAttribute="leading" secondItem="lYH-h7-rdg" secondAttribute="leadingMargin" constant="10" id="0cG-ay-n4i"/>
+                                                <constraint firstItem="xeR-5Y-FnL" firstAttribute="leading" secondItem="lYH-h7-rdg" secondAttribute="leadingMargin" constant="10" id="6IV-Yn-ovf"/>
+                                                <constraint firstItem="Kn7-ie-X0D" firstAttribute="top" secondItem="lYH-h7-rdg" secondAttribute="topMargin" constant="24.5" id="CRq-c1-2Lz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Kn7-ie-X0D" secondAttribute="bottom" constant="24.5" id="J8G-aN-OJ4"/>
+                                                <constraint firstItem="xeR-5Y-FnL" firstAttribute="top" secondItem="lYH-h7-rdg" secondAttribute="topMargin" constant="4" id="XMQ-h6-RcJ"/>
+                                                <constraint firstItem="Kn7-ie-X0D" firstAttribute="centerY" secondItem="lYH-h7-rdg" secondAttribute="centerY" id="bXh-fp-82k"/>
+                                                <constraint firstItem="Kn7-ie-X0D" firstAttribute="leading" secondItem="xeR-5Y-FnL" secondAttribute="trailing" constant="10" id="ebr-17-vXb"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="xeR-5Y-FnL" secondAttribute="bottom" constant="4" id="ho2-rK-61x"/>
+                                                <constraint firstItem="xeR-5Y-FnL" firstAttribute="centerY" secondItem="lYH-h7-rdg" secondAttribute="centerY" id="uHk-GD-bt6"/>
+                                                <constraint firstItem="Kn7-ie-X0D" firstAttribute="leading" secondItem="xeR-5Y-FnL" secondAttribute="trailing" constant="10" id="vFh-PK-icd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellDateLabel" destination="Tls-tE-Sqs" id="Ovi-T4-LNc"/>
+                                            <outlet property="cellGameWinnerLabel" destination="twG-U4-hec" id="mHL-lI-dnf"/>
+                                            <outlet property="cellImageView" destination="xeR-5Y-FnL" id="eTr-5S-WmT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="BEu-dr-JO4" firstAttribute="top" secondItem="zxt-KF-jU0" secondAttribute="top" constant="30" id="0IA-NF-h0e"/>
-                            <constraint firstItem="zxt-KF-jU0" firstAttribute="trailing" secondItem="BEu-dr-JO4" secondAttribute="trailing" constant="20" id="D8d-ge-82c"/>
-                            <constraint firstAttribute="bottom" secondItem="BEu-dr-JO4" secondAttribute="bottom" constant="20" id="DmH-vL-lWA"/>
-                            <constraint firstItem="BEu-dr-JO4" firstAttribute="leading" secondItem="zxt-KF-jU0" secondAttribute="leading" constant="20" id="bEK-DS-hJv"/>
+                            <constraint firstItem="ecD-nU-Nc4" firstAttribute="leading" secondItem="zxt-KF-jU0" secondAttribute="leading" constant="20" id="5KT-Ok-07a"/>
+                            <constraint firstItem="Ll7-Dk-cgG" firstAttribute="top" secondItem="zxt-KF-jU0" secondAttribute="top" constant="15" id="5jw-DC-py4"/>
+                            <constraint firstItem="Ll7-Dk-cgG" firstAttribute="centerX" secondItem="yZl-SJ-GBE" secondAttribute="centerX" id="MhH-Bl-wCH"/>
+                            <constraint firstItem="ecD-nU-Nc4" firstAttribute="top" secondItem="Ll7-Dk-cgG" secondAttribute="bottom" constant="10" id="NkO-rB-ePz"/>
+                            <constraint firstAttribute="bottom" secondItem="ecD-nU-Nc4" secondAttribute="bottom" constant="20" id="hpd-Aa-ra0"/>
+                            <constraint firstItem="zxt-KF-jU0" firstAttribute="trailing" secondItem="ecD-nU-Nc4" secondAttribute="trailing" constant="20" id="rle-oJ-trR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zxt-KF-jU0"/>
                     </view>
@@ -533,7 +538,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzL-3Q-teQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064" y="747"/>
+            <point key="canvasLocation" x="1063.768115942029" y="746.65178571428567"/>
         </scene>
         <!--HowToPlayVC-->
         <scene sceneID="uOi-K0-3LM">
@@ -555,7 +560,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="mel-Na-i08">
                                         <rect key="frame" x="0.0" y="42" width="374" height="736"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <mutableString key="text">
+                                        <string key="text">
 Wolf is played with four players, where all players play independently. The objective of the game is to be the player with the most points at the end of the round.
 
 Before the first hole, the order of play is decided by drawing or by flipping a tee. The 'Wolf' is always the last player to tee off. At each hole, the players rotate the tee-off order (on the first hole 1,2,3,4 and on the second hole 2,3,4,1 and on fifth hole 1,2,3,4 again) so that each player becomes Wolf once every four holes. On the 17th and 18th holes the first and second players are Wolf, respectively.
@@ -566,7 +571,7 @@ After the tee shot of each player, the Wolf decides whether or not to take that 
 * If the Lone Wolf beats all the other players (shoots the lowest NET score), he/she receives 4 points.
 * If another player beats the Lone Wolf on a hole, all players - except the Lone Wolf - receive 1 point.
 
-At the end of the match, the player with the highest total points wins a predetermined 'pot.' Alternatively, a set amount is determined for each point, and the player with the lowest point total pays the difference to all other players. For example, if four players end up with 4,6,8, and 10 points respectively, then the player with 4 points owes 2, 4, and 6 to the other three players. The player with 6 points owes 2 and 4 to the top two players. And the player with 8 points owes 2 to the top player.</mutableString>
+At the end of the match, the player with the highest total points wins a predetermined 'pot.' Alternatively, a set amount is determined for each point, and the player with the lowest point total pays the difference to all other players. For example, if four players end up with 4,6,8, and 10 points respectively, then the player with 4 points owes 2, 4, and 6 to the other three players. The player with 6 points owes 2 and 4 to the top two players. And the player with 8 points owes 2 to the top player.</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

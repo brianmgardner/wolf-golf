@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 import CoreData
 
 protocol RecordAdder {
@@ -17,21 +16,22 @@ protocol RecordAdder {
 
 class RecordsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, RecordAdder {
     
-    let tableCellID = "RecordCellIdentfier"
+    let tableCellID = "RecordCellIdentifier"
     
     var delegate: UIViewController!
+    var myRecordList: [Game] = []
     
     @IBOutlet weak var recordsTableView: UITableView!
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return appDelegate.recordList.count
+        return myRecordList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableCellID, for: indexPath) as! RecordTableViewCell
-        let currRecord = appDelegate.recordList[indexPath.row]
+        let currRecord = myRecordList[indexPath.row]
         // modify the current attributes of the cell's UI as necessary
         cell.cellImageView.image = currRecord.image
         cell.cellGameWinnerLabel.text = "Game Winner: \(currRecord.winner!)"
@@ -42,7 +42,7 @@ class RecordsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // handle an alert/modal with all of the game's data
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currRecord = appDelegate.recordList[indexPath.row]
+        let currRecord = myRecordList[indexPath.row]
         let gameTitle = "\(currRecord.winner!) won the game!"
         let numHoles = appDelegate.isNineHole ? 9 : 18
         let gameMessage = "Date: \(currRecord.date!) \nHigh score: \(currRecord.highScore!) \n\nNumber of Holes played: \(numHoles)"
@@ -53,11 +53,43 @@ class RecordsViewController: UIViewController, UITableViewDataSource, UITableVie
         present(controller, animated: true, completion: nil)
     }
     
-    // remove game
+    // remove the selected game record from our list and delete the UI tableViewCell
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // remove the current timer from our list and delete the UI tableViewCell
+            let recordToBeRemoved = myRecordList[indexPath.row]
+            let context = appDelegate.persistentContainer.viewContext
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserGame")
+            
+            var fetchedResults: [NSManagedObject]
+            
+            // search fields must match exactly
+            // note: can't query by image binary data 
+            let predicateWinner = NSPredicate(format: "winner == %@", recordToBeRemoved.winner!)
+            let predicateDate = NSPredicate(format: "date == %@", recordToBeRemoved.date!)
+            let predicateHighScore = NSPredicate(format: "highScore == %d", recordToBeRemoved.highScore!)
+
+            let andPredicate = NSCompoundPredicate(type: .and, subpredicates: [predicateWinner, predicateDate, predicateHighScore])
+
+            request.predicate = andPredicate
+            
+            do {
+                // fetch and delete
+                try fetchedResults = context.fetch(request) as! [NSManagedObject]
+                if fetchedResults.count > 0 {
+                    for result:AnyObject in fetchedResults {
+                        context.delete(result as! NSManagedObject)
+                    }
+                }
+                try context.save()
+                print("deleting a core data entity success!")
+            } catch {
+                // if an error occurs
+                let nserror = error as NSError
+                NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+                abort()
+            }
             appDelegate.recordList.remove(at: indexPath.row)
+            myRecordList.remove(at: indexPath.row)
             recordsTableView.deleteRows(at: [indexPath], with: .fade)
         }
         // MARK: commit deletion to core data
@@ -74,6 +106,7 @@ class RecordsViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         self.recordsTableView.delegate = self
         self.recordsTableView.dataSource = self
+        self.recordsTableView.rowHeight = UITableView.automaticDimension
         let records = self.retrieveRecords()
         for game in records {
             // MARK: saving an image errors here
@@ -86,8 +119,15 @@ class RecordsViewController: UIViewController, UITableViewDataSource, UITableVie
                 appDelegate.recordList.append(gameToAdd)
             }
         }
-        print("RecordVC and the current fetched results count is: \(appDelegate.recordList.count)")
+        myRecordList = appDelegate.recordList
+        print("RecordVC and the current fetched results count is: \(myRecordList.count)")
         recordsTableView.reloadData()
+        print("Done reloading data")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        appDelegate.recordList = []
+        myRecordList = []
     }
     
     func retrieveRecords() -> [NSManagedObject] {
@@ -106,5 +146,6 @@ class RecordsViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         return (fetchedResults)!
     }
+    
     
 }
