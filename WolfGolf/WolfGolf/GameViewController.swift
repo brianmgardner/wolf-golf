@@ -17,8 +17,19 @@ class RoundTableViewCell: UITableViewCell {
     @IBOutlet weak var cellWinnerLabel: UILabel!
 }
 
+protocol ChangeGameVariation {
+    func setGameVariation(isVar1: Bool)
+}
 
-class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChangeGameVariation {
+    
+    var isGameVariation1: Bool = true
+    
+    func setGameVariation(isVar1: Bool) {
+        self.isGameVariation1 = isVar1
+    }
+    
     
     var roundsList: [Round] = []
     
@@ -113,7 +124,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         randomlyPickFirst()
         
-        playGame(numRounds: 1) // TODO: change ack to numRounds
+        playGame(numRounds: numRounds) // TODO: change ack to numRounds
         
     }
     
@@ -213,7 +224,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.yesPicked = false
         // wait for 'yes/no' to be pressed
         while (!self.yesPicked && !self.noPicked) {
-            usleep(400000)
+            usleep(300000)
             //print(".")
         }
     }
@@ -254,7 +265,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if (!self.curRoundTied) {
                     // ties make the next round worth double
                     if (self.prevRoundTied) {
-                        winPoints *= 2
+                        if (isGameVariation1) {
+                            winPoints *= 2
+                        }
                         self.prevRoundTied = false
                     }
                     player.currScore! += winPoints

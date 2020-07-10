@@ -25,18 +25,20 @@ class SettingsViewController: UIViewController {
     }
     
     
-    
     @IBOutlet weak var gameVariationLabel: UILabel!
     @IBAction func gameVariationSwitchChanged(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let otherVC = delegate as! ChangeGameVariation
         if appDelegate.isVariation1 {
             appDelegate.isVariation1 = false
             self.gameVariationLabel.text = "Game Variation 2"
             // MARK: call protocol method here
+            otherVC.setGameVariation(isVar1: false)
         } else {
             appDelegate.isVariation1 = true
             self.gameVariationLabel.text = "Game Variation 1"
             // MARK: call protocol method here?
+            otherVC.setGameVariation(isVar1: true)
         }
     }
     

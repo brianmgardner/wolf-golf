@@ -21,6 +21,7 @@
 		6D2C19B8249C1DE400A6C291 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D2C19B7249C1DE400A6C291 /* Assets.xcassets */; };
 		6D2C19BB249C1DE400A6C291 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D2C19B9249C1DE400A6C291 /* LaunchScreen.storyboard */; };
 		6D2C1AE024B5151900A6C291 /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2C1ADF24B5151900A6C291 /* NewGameViewController.swift */; };
+		6D5627E424B8190A00FD6F06 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6D5627E324B8190A00FD6F06 /* README.txt */; };
 		6DDEDCC924B666B500239D05 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDEDCC824B666B500239D05 /* GameViewController.swift */; };
 		6DDEDCCB24B671E100239D05 /* PlayerQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDEDCCA24B671E100239D05 /* PlayerQueue.swift */; };
 		6DDEDCCD24B7A23C00239D05 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDEDCCC24B7A23C00239D05 /* Round.swift */; };
@@ -43,6 +44,7 @@
 		6D2C19BA249C1DE400A6C291 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D2C19BC249C1DE400A6C291 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D2C1ADF24B5151900A6C291 /* NewGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
+		6D5627E324B8190A00FD6F06 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		6DDEDCC824B666B500239D05 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		6DDEDCCA24B671E100239D05 /* PlayerQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerQueue.swift; sourceTree = "<group>"; };
 		6DDEDCCC24B7A23C00239D05 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		6D2C19AD249C1DE300A6C291 /* WolfGolf */ = {
 			isa = PBXGroup;
 			children = (
+				6D5627E324B8190A00FD6F06 /* README.txt */,
 				6D2C19AE249C1DE300A6C291 /* AppDelegate.swift */,
 				6D2C19B0249C1DE300A6C291 /* SceneDelegate.swift */,
 				6D2C19B2249C1DE300A6C291 /* HomeScreenViewController.swift */,
@@ -160,6 +163,7 @@
 			files = (
 				6D2C19BB249C1DE400A6C291 /* LaunchScreen.storyboard in Resources */,
 				6D2C19B8249C1DE400A6C291 /* Assets.xcassets in Resources */,
+				6D5627E424B8190A00FD6F06 /* README.txt in Resources */,
 				6D2C19B6249C1DE300A6C291 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
