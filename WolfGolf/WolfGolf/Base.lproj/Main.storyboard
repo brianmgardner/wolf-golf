@@ -567,20 +567,19 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="725" id="QPz-ss-8Af"/>
                                 </constraints>
-                                <string key="text">
-Wolf is played with four players, where all players play independently. The objective of the game is to be the player with the most points at the end of the round.
+                                <mutableString key="text">Wolf is played with four players, where all players play independently. The objective of the game is to be the player with the most points at the end of the round.
 
-Before the first hole, the order of play is decided by drawing or by flipping a tee. The 'Wolf' is always the last player to tee off. At each hole, the players rotate the tee-off order (on the first hole 1,2,3,4 and on the second hole 2,3,4,1 and on fifth hole 1,2,3,4 again) so that each player becomes Wolf once every four holes. On the 17th and 18th holes the first and second players are Wolf, respectively.
+Before the first hole, the order of play is decided by drawing or by flipping a tee. The 'Wolf' is always the last player to tee off. At each hole, the players rotate the tee-off order (on the first hole 1,2,3,4 and on the second hole 2,3,4,1 and on fifth hole 1,2,3,4 again) so that each player becomes Wolf once every four holes.
 
 After the tee shot of each player, the Wolf decides whether or not to take that player on his/her team. Or, after all three other players have teed off, the Wolf can play as a 'Lone Wolf' if they feel they can beat all three other players. As the Lone Wolf, the player plays alone and tries to shoot the lowest NET score on the hole. Otherwise, each hole is played NET best ball (only the best score of each team counts) with scoring as follows:
-* If the Wolf and their partner win the hole, they each    r eceive 2 points.
+* If the Wolf and their partner win the hole, they each  receive 2 points.
 * If the non-Wolf partners win the hole,  they each receive 3 points.
 * If the Lone Wolf beats all the other players (shoots the lowest NET score), he/she receives 4 points.
 * If another player beats the Lone Wolf on a hole, all players - except the Lone Wolf - receive 1 point.
 
-At the end of the match, the player with the highest total points wins a predetermined 'pot.' Alternatively, a set amount is determined for each point, and the player with the lowest point total pays the difference to all other players. For example, if four players end up with 4,6,8, and 10 points respectively, then the player with 4 points owes 2, 4, and 6 to the other three players. The player with 6 points owes 2 and 4 to the top two players. And the player with 8 points owes 2 to the top player.</string>
+At the end of the match, the player with the highest total points wins .</mutableString>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>

@@ -250,12 +250,16 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     func getWinPoints() -> Int {
         if (self.isLoneWolf) {
             if (self.wolfWon) {
-                return  4
+                return  4 // lone wolf won
             } else {
-                return 1
+                return 1 // lone wolf lost
             }
-        } else {
-            return 2
+        } else { // teams
+            if (self.wolfWon) {
+                return 2 // wolf team won
+            } else{
+                return 3 // other team beat wolf team
+            }
         }
     }
     
