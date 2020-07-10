@@ -22,7 +22,8 @@ protocol ChangeGameVariation {
 }
 
 
-class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChangeGameVariation {
+
+class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     var isGameVariation1: Bool = true
     
@@ -30,6 +31,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.isGameVariation1 = isVar1
     }
     
+
     
     var roundsList: [Round] = []
     
@@ -57,6 +59,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var prevRoundTied: Bool = false
     var isLoneWolf: Bool = false
     var curRoundTied: Bool = false
+    
+    var gameImage: UIImage? = nil
     
     @IBOutlet weak var player1Score: UILabel!
     @IBOutlet weak var player2Score: UILabel!
@@ -404,7 +408,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             // save stats here
             DispatchQueue.main.sync {
-                self.displayGameStats()
+                self.promptLabel.text = "Done! Take A Pic!"
+                self.takePicturePrompt()
             }
         }
     }
@@ -502,10 +507,12 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         let timeStamp = dateFormatter.string(from: date)
         
         // currImage: UIImage?, currHighScore: Int?, currDescription: String?, currWinner: String?, currDate: String?
-        let currGame = Game(i: UIImage(), hs: highScore, w: winner, da: timeStamp)
+        let currImage: UIImage = self.gameImage ?? UIImage()
+        let currGame = Game(i: currImage, hs: highScore, w: winner, da: timeStamp)
         
-        let controller = UIAlertController(title: "Game Finished!", message: "\(self.gameWinner.name!) won the game with a score of \(self.gameWinner.currScore!)!", preferredStyle: .alert)
-        controller.addAction(UIAlertAction(title: "Save to Records", style: .default, handler: {action in self.storeGame(g: currGame)}))
+        let controller = UIAlertController(title: "Game Finished!", message: "\(self.gameWinner.name!) won the game with a score of \(self.gameWinner.currScore!)! See game history in Records Tab at main menu.", preferredStyle: .alert)
+        
+        controller.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {action in self.storeGame(g: currGame)}))
         present(controller, animated: true, completion: nil)
     }
     
@@ -551,4 +558,27 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         // make the change to the table data
         appDelegate.recordList.append(g)
     }
+    
+    // helper to access iOS device's native system camera
+    func takePicturePrompt() {
+        let controller = UIImagePickerController()
+        controller.sourceType = .photoLibrary
+        controller.allowsEditing = true
+        controller.delegate = self
+        present(controller, animated: true, completion: nil)
+    }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let image = info[.editedImage] as? UIImage else {
+            print("No image found!")
+            return
+        }
+        print("image was taken and saved correctly")
+        self.gameImage = image
+        self.displayGameStats()
+    }
+
 }
