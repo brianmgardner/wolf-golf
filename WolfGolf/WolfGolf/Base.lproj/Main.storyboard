@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home Screen View Controller-->
+        <!--MENU-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeScreenViewController" customModule="WolfGolf" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,79 +15,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="TPe-1n-GpK">
-                                <rect key="frame" x="20" y="118" width="374" height="699"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wolf Golf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUk-Qu-4pF">
-                                        <rect key="frame" x="92" y="0.0" width="190" height="51.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="43"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ug8-hn-6UY">
-                                        <rect key="frame" x="0.0" y="77.5" width="374" height="274"/>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="s4F-xs-DIO">
-                                        <rect key="frame" x="93.5" y="377.5" width="187" height="321.5"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gs6-Jl-bRj">
-                                                <rect key="frame" x="7" y="0.0" width="173" height="54.5"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
-                                                <state key="normal" title="New Game"/>
-                                                <connections>
-                                                    <segue destination="Apw-td-cuu" kind="show" identifier="newGameSegueIdentifier" id="1ui-jL-vci"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaT-wy-pTW">
-                                                <rect key="frame" x="0.0" y="89.5" width="187" height="54"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
-                                                <state key="normal" title="How to Play"/>
-                                                <connections>
-                                                    <segue destination="wPk-3a-pEq" kind="show" identifier="howToPlaySegueIdentifier" id="9gx-jT-M9y"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqZ-RG-bP6">
-                                                <rect key="frame" x="28" y="178.5" width="131" height="54"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
-                                                <state key="normal" title="Records"/>
-                                                <connections>
-                                                    <segue destination="i7j-T0-wHo" kind="show" identifier="recordsSegueIdentifier" id="bli-Iy-Jdk"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SR8-A3-ftX">
-                                                <rect key="frame" x="27" y="267.5" width="133" height="54"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
-                                                <state key="normal" title="Settings"/>
-                                                <connections>
-                                                    <segue destination="kxT-ZN-zpc" kind="show" identifier="settingsSegueIdentifier" id="dhS-qr-wdH"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="golf-background" translatesAutoresizingMaskIntoConstraints="NO" id="cBV-vc-h0x">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a27-be-5Ys">
+                                <rect key="frame" x="82" y="436" width="250" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="40"/>
+                                <state key="normal" title="NEW GAME"/>
+                                <connections>
+                                    <action selector="newGamePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zpp-Jt-Hzq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKt-XS-cr4">
+                                <rect key="frame" x="72" y="538" width="270" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="37"/>
+                                <state key="normal" title="HOW TO PLAY"/>
+                                <connections>
+                                    <action selector="howToPlayPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aBV-Zm-4Np"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRL-zK-2VG">
+                                <rect key="frame" x="82" y="639" width="250" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="40"/>
+                                <state key="normal" title="RECORDS"/>
+                                <connections>
+                                    <action selector="recordsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="htL-dw-qI9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bQ-bR-wBt">
+                                <rect key="frame" x="82" y="748" width="250" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="40"/>
+                                <state key="normal" title="SETTINGS"/>
+                                <connections>
+                                    <action selector="settingsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UZM-UX-OhK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TPe-1n-GpK" secondAttribute="trailing" constant="20" id="I2F-5A-mRy"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="TPe-1n-GpK" secondAttribute="bottom" constant="45" id="gll-cW-kpa"/>
-                            <constraint firstItem="TPe-1n-GpK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="j5o-Kt-k3Z"/>
-                            <constraint firstItem="TPe-1n-GpK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="k6x-eC-t2O"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="epz-0d-3xX"/>
+                    <navigationItem key="navigationItem" title="MENU" id="epz-0d-3xX"/>
                     <connections>
-                        <outlet property="homeScreenImageView" destination="ug8-hn-6UY" id="YPh-HZ-UDk"/>
-                        <outlet property="howToPlayButton" destination="zaT-wy-pTW" id="y8n-z8-EmC"/>
-                        <outlet property="newGameButton" destination="Gs6-Jl-bRj" id="j89-TW-TD2"/>
-                        <outlet property="recordsButton" destination="oqZ-RG-bP6" id="hox-9O-GmI"/>
-                        <outlet property="settingsButton" destination="SR8-A3-ftX" id="PaW-gj-RyO"/>
+                        <outlet property="howToPlayButton" destination="BKt-XS-cr4" id="UB3-sq-JVw"/>
+                        <outlet property="newGameButton" destination="a27-be-5Ys" id="XAK-wG-oRI"/>
+                        <outlet property="recordsButton" destination="wRL-zK-2VG" id="O1i-YX-SP2"/>
+                        <outlet property="settingsButton" destination="1bQ-bR-wBt" id="KxX-HP-Wdk"/>
+                        <segue destination="Apw-td-cuu" kind="show" identifier="newGameSegueIdentifier" id="lTE-Lf-EuF"/>
+                        <segue destination="wPk-3a-pEq" kind="show" identifier="howToPlaySegueIdentifier" id="iGq-gP-sAb"/>
+                        <segue destination="i7j-T0-wHo" kind="show" identifier="recordsSegueIdentifier" id="C5t-DZ-IXH"/>
+                        <segue destination="kxT-ZN-zpc" kind="show" identifier="settingsSegueIdentifier" id="xSQ-Cr-EA2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1065" y="62"/>
+            <point key="canvasLocation" x="1063.768115942029" y="61.607142857142854"/>
         </scene>
         <!--NewGameVC-->
         <scene sceneID="qlG-sb-xns">
@@ -373,16 +363,6 @@
                                     <action selector="noClicked:" destination="TFU-en-qGh" eventType="touchUpInside" id="HuI-sx-sHX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bd-cU-tYL">
-                                <rect key="frame" x="353" y="830" width="38" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextRoundClicked:" destination="TFU-en-qGh" eventType="touchUpInside" id="DJL-xF-9RP"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Auc-mM-aC3">
                                 <rect key="frame" x="27" y="375" width="173" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -418,6 +398,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bd-cU-tYL">
+                                <rect key="frame" x="317" y="822" width="60" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextRoundClicked:" destination="TFU-en-qGh" eventType="touchUpInside" id="DJL-xF-9RP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="CT8-9m-jQb"/>
@@ -427,6 +419,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="curHoleLabel" destination="Aws-cY-SGL" id="15b-2J-IBg"/>
+                        <outlet property="nextButton" destination="5bd-cU-tYL" id="luf-ES-e6W"/>
                         <outlet property="noTeamButton" destination="uWT-wr-VPu" id="Jov-Qd-wcQ"/>
                         <outlet property="player1Score" destination="Auc-mM-aC3" id="fLF-ic-eyI"/>
                         <outlet property="player2Score" destination="s8K-ld-xv4" id="UcY-Ma-Mzf"/>
@@ -455,7 +448,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hall of Fame" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ll7-Dk-cgG">
                                 <rect key="frame" x="103.5" y="103" width="207" height="42"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ecD-nU-Nc4">
@@ -520,7 +513,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ecD-nU-Nc4" firstAttribute="leading" secondItem="zxt-KF-jU0" secondAttribute="leading" constant="20" id="5KT-Ok-07a"/>
                             <constraint firstItem="Ll7-Dk-cgG" firstAttribute="top" secondItem="zxt-KF-jU0" secondAttribute="top" constant="15" id="5jw-DC-py4"/>
@@ -554,8 +547,8 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rules of Wolf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThI-GQ-KAq">
                                         <rect key="frame" x="76.5" y="0.0" width="221.5" height="42"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="mel-Na-i08">
                                         <rect key="frame" x="0.0" y="42" width="374" height="736"/>
@@ -639,16 +632,16 @@ At the end of the match, the player with the highest total points wins a predete
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Night Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oI-zi-261">
-                                <rect key="frame" x="70" y="200" width="127" height="30"/>
+                                <rect key="frame" x="70" y="200" width="133" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Variation 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCH-lU-nWi">
                                 <rect key="frame" x="70" y="273" width="210" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -674,14 +667,14 @@ At the end of the match, the player with the highest total points wins a predete
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9 Hole" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USM-SS-2mi">
-                                <rect key="frame" x="70" y="349" width="71" height="30"/>
+                                <rect key="frame" x="70" y="349" width="74" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="aGa-TD-bQJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="tPq-2v-IEK"/>
@@ -697,6 +690,7 @@ At the end of the match, the player with the highest total points wins a predete
         </scene>
     </scenes>
     <resources>
+        <image name="golf-background" width="830" height="1800"/>
         <image name="golf-ball1" width="512" height="410"/>
         <image name="plus" catalog="system" width="128" height="113"/>
     </resources>

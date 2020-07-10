@@ -59,6 +59,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var noTeamButton: UIButton!
     @IBOutlet weak var winnerTextLabel: UILabel!
     @IBOutlet weak var winnerSeg: UISegmentedControl!
+    @IBOutlet weak var nextButton: UIButton!
     
     let buttonQueue = DispatchQueue(label: "myQueue", qos: .default)
     
@@ -88,6 +89,16 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let black = CGColor(srgbRed: 0x00, green: 0x00, blue: 0x00, alpha: 1.0)
+        yesTeamButton.layer.cornerRadius = 10
+        yesTeamButton.layer.borderWidth = 2
+        yesTeamButton.layer.borderColor = black
+        noTeamButton.layer.cornerRadius = 10
+        noTeamButton.layer.borderWidth = 2
+        noTeamButton.layer.borderColor = black
+        nextButton.layer.cornerRadius = 10
+        nextButton.layer.borderWidth = 1
+        nextButton.layer.borderColor = black
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let numRounds: Int = appDelegate.isNineHole ? 9 : 18

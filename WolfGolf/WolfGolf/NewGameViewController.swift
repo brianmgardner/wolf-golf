@@ -120,7 +120,7 @@ class NewGameViewController: UIViewController {
             promptLabel.isHidden = false
             promptLabel.text = """
             Player Names Not Properly Set Up.
-            Cannot Start Game Yet.
+                (Don't forget to tap '+')
             """
         }
     }
