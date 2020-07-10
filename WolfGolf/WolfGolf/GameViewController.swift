@@ -25,13 +25,13 @@ protocol ChangeGameVariation {
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
-    var isGameVariation1: Bool = true
-    
-    func setGameVariation(isVar1: Bool) {
-        self.isGameVariation1 = isVar1
+    // In Game Variation 1, Ties double the points of the following round
+    var isGameVariation1: Bool {
+        get {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            return appDelegate.isVariation1
+        }
     }
-    
-
     
     var roundsList: [Round] = []
     

@@ -555,19 +555,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="C3W-Vi-DA3">
-                                <rect key="frame" x="20" y="108" width="374" height="778"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rules of Wolf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThI-GQ-KAq">
-                                        <rect key="frame" x="76.5" y="0.0" width="221.5" height="42"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="mel-Na-i08">
-                                        <rect key="frame" x="0.0" y="42" width="374" height="736"/>
-                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <string key="text">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rules of Wolf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThI-GQ-KAq">
+                                <rect key="frame" x="96.5" y="98" width="221.5" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="mel-Na-i08">
+                                <rect key="frame" x="20" y="150" width="374" height="725"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="725" id="QPz-ss-8Af"/>
+                                </constraints>
+                                <string key="text">
 Wolf is played with four players, where all players play independently. The objective of the game is to be the player with the most points at the end of the round.
 
 Before the first hole, the order of play is decided by drawing or by flipping a tee. The 'Wolf' is always the last player to tee off. At each hole, the players rotate the tee-off order (on the first hole 1,2,3,4 and on the second hole 2,3,4,1 and on fifth hole 1,2,3,4 again) so that each player becomes Wolf once every four holes. On the 17th and 18th holes the first and second players are Wolf, respectively.
@@ -579,19 +579,19 @@ After the tee shot of each player, the Wolf decides whether or not to take that 
 * If another player beats the Lone Wolf on a hole, all players - except the Lone Wolf - receive 1 point.
 
 At the end of the match, the player with the highest total points wins a predetermined 'pot.' Alternatively, a set amount is determined for each point, and the player with the lowest point total pays the difference to all other players. For example, if four players end up with 4,6,8, and 10 points respectively, then the player with 4 points owes 2, 4, and 6 to the other three players. The player with 6 points owes 2 and 4 to the top two players. And the player with 8 points owes 2 to the top player.</string>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                            </stackView>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="qde-CY-hBT" firstAttribute="trailing" secondItem="C3W-Vi-DA3" secondAttribute="trailing" constant="20" id="3A3-JL-Czr"/>
-                            <constraint firstItem="C3W-Vi-DA3" firstAttribute="top" secondItem="qde-CY-hBT" secondAttribute="top" constant="20" id="6Og-oV-GbI"/>
-                            <constraint firstItem="C3W-Vi-DA3" firstAttribute="leading" secondItem="qde-CY-hBT" secondAttribute="leading" constant="20" id="Wuf-9Z-T6P"/>
-                            <constraint firstAttribute="bottom" secondItem="C3W-Vi-DA3" secondAttribute="bottom" constant="10" id="stt-bR-jJx"/>
+                            <constraint firstItem="ThI-GQ-KAq" firstAttribute="centerX" secondItem="G7T-B4-jzw" secondAttribute="centerX" id="1mR-zv-oA9"/>
+                            <constraint firstItem="mel-Na-i08" firstAttribute="leading" secondItem="qde-CY-hBT" secondAttribute="leading" constant="20" id="2gu-SJ-4W1"/>
+                            <constraint firstItem="ThI-GQ-KAq" firstAttribute="top" secondItem="qde-CY-hBT" secondAttribute="top" constant="10" id="5o0-Wj-hgQ"/>
+                            <constraint firstItem="mel-Na-i08" firstAttribute="centerX" secondItem="G7T-B4-jzw" secondAttribute="centerX" id="IdX-LP-RBv"/>
+                            <constraint firstItem="mel-Na-i08" firstAttribute="top" secondItem="ThI-GQ-KAq" secondAttribute="bottom" constant="10" id="h0D-Y5-s69"/>
+                            <constraint firstItem="qde-CY-hBT" firstAttribute="trailing" secondItem="mel-Na-i08" secondAttribute="trailing" constant="20" id="sM8-0f-Ijy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qde-CY-hBT"/>
                     </view>
